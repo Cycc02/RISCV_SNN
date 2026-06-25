@@ -1,0 +1,25 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun  8 21:58:52 2026
+# Process ID         : 17620
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out
+# Command line       : xsim.exe -log C:\Users\Administrator\Documents\FYP_Docs\RISCV_SNN\sim_out\aer_fifo_sim.log -mode tcl -source {xsim.dir/aer_fifo_snap/xsim_script.tcl}
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out/aer_fifo_sim.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out\xsim.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 26702 MB
+#-----------------------------------------------------------
+source xsim.dir/aer_fifo_snap/xsim_script.tcl
+run -all

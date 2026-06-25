@@ -1,0 +1,20 @@
+// Simple RV32I pipeline test
+// addi x1, x0, 5      ; x1 = 5
+// addi x2, x0, 3      ; x2 = 3
+// add  x3, x1, x2     ; x3 = 8  (tests forwarding from EX/MEM)
+// addi x4, x0, 8      ; x4 = 8
+// bne  x3, x4, fail   ; if x3!=8 goto fail (should NOT branch)
+// addi a0, x0, 1      ; a0 = 1 (PASS code)
+// lui  a1, 0x10       ; a1 = 0x10000 (tohost)
+// sw   a0, 0(a1)      ; write PASS to tohost
+// j    .              ; loop
+// fail:
+// addi a0, x0, 2      ; a0 = 2 (FAIL code)
+// lui  a1, 0x10       ; a1 = 0x10000
+// sw   a0, 0(a1)      ; write FAIL to tohost
+// j    .              ; loop
+@00000000
+00500093 00300113 002081B3 00800213
+00419A63 00100513 000105B7 00A5A023
+0000006F 00200513 000105B7 00A5A023
+0000006F

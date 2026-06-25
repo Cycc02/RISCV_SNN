@@ -1,0 +1,6 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../RISCV_SNN.gen/sources_1/ip/axi_uart/sim/axi_uart.vhd" \
+
+# Do not sort compile order
+nosort

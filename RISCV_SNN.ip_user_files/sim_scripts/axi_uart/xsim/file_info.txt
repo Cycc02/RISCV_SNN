@@ -1,0 +1,2 @@
+axi_uart.vhd,vhdl,xil_defaultlib,../../../../RISCV_SNN.gen/sources_1/ip/axi_uart/sim/axi_uart.vhd,incdir="../../../../../../../../../AMDDesignTools/2025.2/Vivado/data/rsb/busdef"
+glbl.v,Verilog,xil_defaultlib,glbl.v

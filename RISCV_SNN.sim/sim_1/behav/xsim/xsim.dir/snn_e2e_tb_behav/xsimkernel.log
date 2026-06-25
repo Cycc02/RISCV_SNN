@@ -1,0 +1,7 @@
+Running: xsim.dir/snn_e2e_tb_behav/xsimk.exe -simmode gui -wdb snn_e2e_tb_behav.wdb -simrunnum 0 -socket 53424
+Design successfully loaded
+Design Loading Memory Usage: 22208 KB (Peak: 22208 KB)
+Design Loading CPU Usage: 108 ms
+Simulation completed
+Simulation Memory Usage: 38276 KB (Peak: 38276 KB)
+Simulation CPU Usage: 1780 ms

@@ -1,0 +1,15 @@
+
+=== SNN end-to-end demo ===
+Image word index in DTCM: 0x0000004C
+True label: 3
+
+--- SNN result ---
+Output spikes (10b): 0x00000008
+Hidden spikes hi/lo: 0x78979FE1 0xA7538AC0
+Predicted class: 3
+
+--- Cycle accounting ---
+SNN busy cycles  : 2007
+CPU parallel iters: 111
+CPU checksum     : 0x6C748690
+=== Demo complete ===

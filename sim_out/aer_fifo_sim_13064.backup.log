@@ -1,0 +1,109 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun  8 21:49:56 2026
+# Process ID         : 13064
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out
+# Command line       : xsim.exe -log C:\Users\Administrator\Documents\FYP_Docs\RISCV_SNN\sim_out\aer_fifo_sim.log -mode tcl -source {xsim.dir/aer_fifo_snap/xsim_script.tcl}
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out/aer_fifo_sim.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out\xsim.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 27423 MB
+#-----------------------------------------------------------
+source xsim.dir/aer_fifo_snap/xsim_script.tcl
+# xsim {aer_fifo_snap} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== AER_FIFO TB START ===
+[TB] Writing 6 pixel addresses into FIFO...
+[AER_FIFO @55000] WRITE  pxl=0  wp=0  count=1
+[AER_FIFO @65000] WRITE  pxl=42  wp=1  count=2
+[AER_FIFO @75000] WRITE  pxl=100  wp=2  count=3
+[AER_FIFO @85000] WRITE  pxl=255  wp=3  count=4
+[AER_FIFO @95000] WRITE  pxl=512  wp=4  count=5
+[AER_FIFO @105000] WRITE  pxl=783  wp=5  count=6
+[TB] Reading back from FIFO...
+[AER_FIFO @155000] READ   pxl=0  rp=0  count=5
+[AER_FIFO @165000] READ   pxl=42  rp=1  count=4
+[AER_FIFO @175000] READ   pxl=100  rp=2  count=3
+[AER_FIFO @185000] READ   pxl=255  rp=3  count=2
+[AER_FIFO @195000] READ   pxl=512  rp=4  count=1
+[TB] Filling FIFO to capacity (64 entries)...
+[AER_FIFO @265000] WRITE  pxl=0  wp=6  count=2
+[AER_FIFO @275000] WRITE  pxl=1  wp=7  count=3
+[AER_FIFO @285000] WRITE  pxl=2  wp=8  count=4
+[AER_FIFO @295000] WRITE  pxl=3  wp=9  count=5
+[AER_FIFO @305000] WRITE  pxl=4  wp=10  count=6
+[AER_FIFO @315000] WRITE  pxl=5  wp=11  count=7
+[AER_FIFO @325000] WRITE  pxl=6  wp=12  count=8
+[AER_FIFO @335000] WRITE  pxl=7  wp=13  count=9
+[AER_FIFO @345000] WRITE  pxl=8  wp=14  count=10
+[AER_FIFO @355000] WRITE  pxl=9  wp=15  count=11
+[AER_FIFO @365000] WRITE  pxl=10  wp=16  count=12
+[AER_FIFO @375000] WRITE  pxl=11  wp=17  count=13
+[AER_FIFO @385000] WRITE  pxl=12  wp=18  count=14
+[AER_FIFO @395000] WRITE  pxl=13  wp=19  count=15
+[AER_FIFO @405000] WRITE  pxl=14  wp=20  count=16
+[AER_FIFO @415000] WRITE  pxl=15  wp=21  count=17
+[AER_FIFO @425000] WRITE  pxl=16  wp=22  count=18
+[AER_FIFO @435000] WRITE  pxl=17  wp=23  count=19
+[AER_FIFO @445000] WRITE  pxl=18  wp=24  count=20
+[AER_FIFO @455000] WRITE  pxl=19  wp=25  count=21
+[AER_FIFO @465000] WRITE  pxl=20  wp=26  count=22
+[AER_FIFO @475000] WRITE  pxl=21  wp=27  count=23
+[AER_FIFO @485000] WRITE  pxl=22  wp=28  count=24
+[AER_FIFO @495000] WRITE  pxl=23  wp=29  count=25
+[AER_FIFO @505000] WRITE  pxl=24  wp=30  count=26
+[AER_FIFO @515000] WRITE  pxl=25  wp=31  count=27
+[AER_FIFO @525000] WRITE  pxl=26  wp=32  count=28
+[AER_FIFO @535000] WRITE  pxl=27  wp=33  count=29
+[AER_FIFO @545000] WRITE  pxl=28  wp=34  count=30
+[AER_FIFO @555000] WRITE  pxl=29  wp=35  count=31
+[AER_FIFO @565000] WRITE  pxl=30  wp=36  count=32
+[AER_FIFO @575000] WRITE  pxl=31  wp=37  count=33
+[AER_FIFO @585000] WRITE  pxl=32  wp=38  count=34
+[AER_FIFO @595000] WRITE  pxl=33  wp=39  count=35
+[AER_FIFO @605000] WRITE  pxl=34  wp=40  count=36
+[AER_FIFO @615000] WRITE  pxl=35  wp=41  count=37
+[AER_FIFO @625000] WRITE  pxl=36  wp=42  count=38
+[AER_FIFO @635000] WRITE  pxl=37  wp=43  count=39
+[AER_FIFO @645000] WRITE  pxl=38  wp=44  count=40
+[AER_FIFO @655000] WRITE  pxl=39  wp=45  count=41
+[AER_FIFO @665000] WRITE  pxl=40  wp=46  count=42
+[AER_FIFO @675000] WRITE  pxl=41  wp=47  count=43
+[AER_FIFO @685000] WRITE  pxl=42  wp=48  count=44
+[AER_FIFO @695000] WRITE  pxl=43  wp=49  count=45
+[AER_FIFO @705000] WRITE  pxl=44  wp=50  count=46
+[AER_FIFO @715000] WRITE  pxl=45  wp=51  count=47
+[AER_FIFO @725000] WRITE  pxl=46  wp=52  count=48
+[AER_FIFO @735000] WRITE  pxl=47  wp=53  count=49
+[AER_FIFO @745000] WRITE  pxl=48  wp=54  count=50
+[AER_FIFO @755000] WRITE  pxl=49  wp=55  count=51
+[AER_FIFO @765000] WRITE  pxl=50  wp=56  count=52
+[AER_FIFO @775000] WRITE  pxl=51  wp=57  count=53
+[AER_FIFO @785000] WRITE  pxl=52  wp=58  count=54
+[AER_FIFO @795000] WRITE  pxl=53  wp=59  count=55
+[AER_FIFO @805000] WRITE  pxl=54  wp=60  count=56
+[AER_FIFO @815000] WRITE  pxl=55  wp=61  count=57
+[AER_FIFO @825000] WRITE  pxl=56  wp=62  count=58
+[AER_FIFO @835000] WRITE  pxl=57  wp=63  count=59
+[AER_FIFO @845000] WRITE  pxl=58  wp=0  count=60
+[AER_FIFO @855000] WRITE  pxl=59  wp=1  count=61
+[AER_FIFO @865000] WRITE  pxl=60  wp=2  count=62
+[AER_FIFO @875000] WRITE  pxl=61  wp=3  count=63
+[AER_FIFO @885000] WRITE  pxl=62  wp=4  count=64
+=== AER_FIFO TB DONE ===
+$finish called at time : 965 ns : File "C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sim_1/new/aer_fifo_tb.sv" Line 76
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Jun  8 21:49:58 2026...

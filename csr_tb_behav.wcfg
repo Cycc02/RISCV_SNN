@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="csr_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="csr_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="11,207.666 ns"></ZoomStartTime>
+      <ZoomEndTime time="12,021.667 ns"></ZoomEndTime>
+      <Cursor1Time time="11,886.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="70"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="31" />
+   <wvobject fp_name="/csr_tb/clk_i" type="logic">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/rstn_i" type="logic">
+      <obj_property name="ElementShortName">rstn_i</obj_property>
+      <obj_property name="ObjectShortName">rstn_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_rwe_i" type="logic">
+      <obj_property name="ElementShortName">csr_rwe_i</obj_property>
+      <obj_property name="ObjectShortName">csr_rwe_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_addr_i" type="array">
+      <obj_property name="ElementShortName">csr_addr_i[11:0]</obj_property>
+      <obj_property name="ObjectShortName">csr_addr_i[11:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/rs1_i" type="array">
+      <obj_property name="ElementShortName">rs1_i[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_i[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/rs1_data_i" type="array">
+      <obj_property name="ElementShortName">rs1_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/pc_i" type="array">
+      <obj_property name="ElementShortName">pc_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/mret_trigger_i" type="logic">
+      <obj_property name="ElementShortName">mret_trigger_i</obj_property>
+      <obj_property name="ObjectShortName">mret_trigger_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_ctrl_i" type="array">
+      <obj_property name="ElementShortName">csr_ctrl_i[2:0]</obj_property>
+      <obj_property name="ObjectShortName">csr_ctrl_i[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/timer_intrpt" type="logic">
+      <obj_property name="ElementShortName">timer_intrpt</obj_property>
+      <obj_property name="ObjectShortName">timer_intrpt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/ext_intrpt" type="logic">
+      <obj_property name="ElementShortName">ext_intrpt</obj_property>
+      <obj_property name="ObjectShortName">ext_intrpt</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/illegal_instr_excp" type="logic">
+      <obj_property name="ElementShortName">illegal_instr_excp</obj_property>
+      <obj_property name="ObjectShortName">illegal_instr_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/instr_mis_excp" type="logic">
+      <obj_property name="ElementShortName">instr_mis_excp</obj_property>
+      <obj_property name="ObjectShortName">instr_mis_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/lsu_ld_mis_excp" type="logic">
+      <obj_property name="ElementShortName">lsu_ld_mis_excp</obj_property>
+      <obj_property name="ObjectShortName">lsu_ld_mis_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/lsu_st_mis_excp" type="logic">
+      <obj_property name="ElementShortName">lsu_st_mis_excp</obj_property>
+      <obj_property name="ObjectShortName">lsu_st_mis_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/ecall_excp" type="logic">
+      <obj_property name="ElementShortName">ecall_excp</obj_property>
+      <obj_property name="ObjectShortName">ecall_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/wb_csr_o" type="array">
+      <obj_property name="ElementShortName">wb_csr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wb_csr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/branch_csr_o" type="array">
+      <obj_property name="ElementShortName">branch_csr_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_csr_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/trap_trigger_o" type="logic">
+      <obj_property name="ElementShortName">trap_trigger_o</obj_property>
+      <obj_property name="ObjectShortName">trap_trigger_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_out_err" type="logic">
+      <obj_property name="ElementShortName">csr_out_err</obj_property>
+      <obj_property name="ObjectShortName">csr_out_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_addr_err" type="logic">
+      <obj_property name="ElementShortName">csr_addr_err</obj_property>
+      <obj_property name="ObjectShortName">csr_addr_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_reg_err" type="logic">
+      <obj_property name="ElementShortName">csr_reg_err</obj_property>
+      <obj_property name="ObjectShortName">csr_reg_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_trap_cause_err" type="logic">
+      <obj_property name="ElementShortName">csr_trap_cause_err</obj_property>
+      <obj_property name="ObjectShortName">csr_trap_cause_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_trap_pc_err" type="logic">
+      <obj_property name="ElementShortName">csr_trap_pc_err</obj_property>
+      <obj_property name="ObjectShortName">csr_trap_pc_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_trap_stat_err" type="logic">
+      <obj_property name="ElementShortName">csr_trap_stat_err</obj_property>
+      <obj_property name="ObjectShortName">csr_trap_stat_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/old_val" type="array">
+      <obj_property name="ElementShortName">old_val[31:0]</obj_property>
+      <obj_property name="ObjectShortName">old_val[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/target_data" type="array">
+      <obj_property name="ElementShortName">target_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">target_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_check_trig" type="logic">
+      <obj_property name="ElementShortName">csr_check_trig</obj_property>
+      <obj_property name="ObjectShortName">csr_check_trig</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/expected_mcause" type="array">
+      <obj_property name="ElementShortName">expected_mcause[31:0]</obj_property>
+      <obj_property name="ObjectShortName">expected_mcause[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/old_mstatus" type="array">
+      <obj_property name="ElementShortName">old_mstatus[31:0]</obj_property>
+      <obj_property name="ObjectShortName">old_mstatus[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/csr_tb/csr_excp" type="array">
+      <obj_property name="ElementShortName">csr_excp[6:0]</obj_property>
+      <obj_property name="ObjectShortName">csr_excp[6:0]</obj_property>
+   </wvobject>
+</wave_config>

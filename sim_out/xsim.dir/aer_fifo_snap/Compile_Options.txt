@@ -1,0 +1,1 @@
+"aer_fifo_tb" -s "aer_fifo_snap" 

@@ -1,0 +1,2 @@
+Sample in Buffer,Sample in Window,TRIGGER,dbg_pc[14:0],dbg_rstn,dbg_uart_addr,dbg_uart_tx_pre,dbg_uart_tx_valid,trap_trigger,reg_dec_pc[31:0],dbg_uart_char[7:0]
+Radix - UNSIGNED,UNSIGNED,UNSIGNED,HEX,HEX,HEX,HEX,HEX,HEX,HEX,HEX

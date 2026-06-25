@@ -1,0 +1,42 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun  8 22:33:45 2026
+# Process ID         : 10672
+# Current directory  : C:/Users/Administrator/AppData/Local/Temp/snn_pe_sim
+# Command line       : xsim.exe -log snn_pe_sim.log -mode tcl -source {xsim.dir/snn_pe_snap/xsim_script.tcl}
+# Log file           : C:/Users/Administrator/AppData/Local/Temp/snn_pe_sim/snn_pe_sim.log
+# Journal file       : C:/Users/Administrator/AppData/Local/Temp/snn_pe_sim\xsim.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 26117 MB
+#-----------------------------------------------------------
+source xsim.dir/snn_pe_snap/xsim_script.tcl
+# xsim {snn_pe_snap} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== SNN_PE TB START ===
+[TB] Test 1 - Accumulate spike=1 weight=50 threshold=179 (spike on 4th)
+[TB] Success - acc=200 spike=1
+[TB] Test 2 - spike=0, weight=100, acc stays 0
+[TB] Success - acc=0 spike=0
+[TB] Test 3 - leak_en=1, acc=160 weight=20 (v_leaked=80 add_w=100)
+[TB] Success - acc=100 spike=0
+[TB] Test 4 - spike=1 weight=-30 acc=50 (add_w=20)
+[TB] Success - acc=20 spike=0
+[TB] Test 5 - acc=129 weight=50 (129+50=179 == threshold, spike)
+[TB] Success - acc=179 spike=1
+=== SNN_PE TB DONE ===
+$finish called at time : 286 ns : File "C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sim_1/new/snn_pe_tb.sv" Line 108
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Jun  8 22:33:47 2026...

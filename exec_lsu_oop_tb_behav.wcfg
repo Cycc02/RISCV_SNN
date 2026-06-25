@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="exec_lsu_oop_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="\$unit_alu_tb_sv_1751258019 " />
+            <top_module name="exec_lsu_oop_tb" />
+            <top_module name="glbl" />
+            <top_module name="std" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,271.242 ns"></ZoomEndTime>
+      <Cursor1Time time="748.366 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/data_rd2_i" type="array">
+      <obj_property name="ElementShortName">data_rd2_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_rd2_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/lsu_ctrl_i" type="array">
+      <obj_property name="ElementShortName">lsu_ctrl_i[3:0]</obj_property>
+      <obj_property name="ObjectShortName">lsu_ctrl_i[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/lsu_en_i" type="logic">
+      <obj_property name="ElementShortName">lsu_en_i</obj_property>
+      <obj_property name="ObjectShortName">lsu_en_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/dtcm_data_o" type="array">
+      <obj_property name="ElementShortName">dtcm_data_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">dtcm_data_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/dtcm_addr_o" type="array">
+      <obj_property name="ElementShortName">dtcm_addr_o[29:0]</obj_property>
+      <obj_property name="ObjectShortName">dtcm_addr_o[29:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/mask_o" type="array">
+      <obj_property name="ElementShortName">mask_o[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mask_o[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/ld_ext_ctrl_o" type="array">
+      <obj_property name="ElementShortName">ld_ext_ctrl_o[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ld_ext_ctrl_o[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/dtcm_rd_en_o" type="logic">
+      <obj_property name="ElementShortName">dtcm_rd_en_o</obj_property>
+      <obj_property name="ObjectShortName">dtcm_rd_en_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/dtcm_wr_en_o" type="logic">
+      <obj_property name="ElementShortName">dtcm_wr_en_o</obj_property>
+      <obj_property name="ObjectShortName">dtcm_wr_en_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/ld_addr_mis_ex_o" type="logic">
+      <obj_property name="ElementShortName">ld_addr_mis_ex_o</obj_property>
+      <obj_property name="ObjectShortName">ld_addr_mis_ex_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/st_addr_mis_ex_o" type="logic">
+      <obj_property name="ElementShortName">st_addr_mis_ex_o</obj_property>
+      <obj_property name="ObjectShortName">st_addr_mis_ex_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/alu_addr" type="array">
+      <obj_property name="ElementShortName">alu_addr[29:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_addr[29:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/lane" type="array">
+      <obj_property name="ElementShortName">lane[1:0]</obj_property>
+      <obj_property name="ObjectShortName">lane[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_data" type="array">
+      <obj_property name="ElementShortName">reg_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_mask" type="array">
+      <obj_property name="ElementShortName">reg_mask[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_mask[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_ext_ctrl" type="array">
+      <obj_property name="ElementShortName">reg_ext_ctrl[1:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_ext_ctrl[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_rd" type="logic">
+      <obj_property name="ElementShortName">reg_rd</obj_property>
+      <obj_property name="ObjectShortName">reg_rd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_wr" type="logic">
+      <obj_property name="ElementShortName">reg_wr</obj_property>
+      <obj_property name="ObjectShortName">reg_wr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_ld_excp" type="logic">
+      <obj_property name="ElementShortName">reg_ld_excp</obj_property>
+      <obj_property name="ObjectShortName">reg_ld_excp</obj_property>
+   </wvobject>
+   <wvobject fp_name="/exec_lsu_oop_tb/dut_lsu/reg_st_excp" type="logic">
+      <obj_property name="ElementShortName">reg_st_excp</obj_property>
+      <obj_property name="ObjectShortName">reg_st_excp</obj_property>
+   </wvobject>
+</wave_config>

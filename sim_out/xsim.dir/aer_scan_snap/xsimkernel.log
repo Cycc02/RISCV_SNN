@@ -1,0 +1,7 @@
+Running: xsim.dir/aer_scan_snap/xsimk.exe -runall -simmode gui -wdb aer_scan_snap.wdb -simrunnum 0 -socket 49936
+Design successfully loaded
+Design Loading Memory Usage: 10520 KB (Peak: 10520 KB)
+Design Loading CPU Usage: 15 ms
+Simulation completed
+Simulation Memory Usage: 12256 KB (Peak: 12256 KB)
+Simulation CPU Usage: 15 ms

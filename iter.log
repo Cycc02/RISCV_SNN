@@ -1,0 +1,86 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Fri Jun 12 14:55:21 2026
+# Process ID         : 4596
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN
+# Command line       : vivado.exe -mode batch -source check_iter.tcl -journal iter.jou -log iter.log
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/iter.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN\iter.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 28479 MB
+#-----------------------------------------------------------
+source check_iter.tcl
+# set PROJ_ROOT [file dirname [info script]]
+# open_hw_manager
+open_hw_manager: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 536.688 ; gain = 224.172
+# connect_hw_server -url localhost:3121 -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 14 2025-07:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+# set_property PARAM.FREQUENCY 500000 [lindex [get_hw_targets] 0]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210299A1F551
+# set dev [lindex [get_hw_devices xc7z030*] 0]
+# current_hw_device $dev
+# set_property PROBES.FILE [file join $PROJ_ROOT RISCV_SNN.runs impl_1 riscv_top.ltx] $dev
+# set_property FULL_PROBES.FILE [file join $PROJ_ROOT RISCV_SNN.runs impl_1 riscv_top.ltx] $dev
+# refresh_hw_device $dev
+INFO: [Labtools 27-2302] Device xc7z030 (JTAG device index = 1) is programmed with a design that has 1 ILA core(s).
+# set ila [lindex [get_hw_ilas] 0]
+# set p_pc [get_hw_probes *dbg_pc* -of_objects $ila]
+# set p_uart [get_hw_probes *dbg_uart_addr* -of_objects $ila]
+# set_property TRIGGER_COMPARE_VALUE eq1'bX $p_uart
+# foreach {label pcval} {matrix_call 15'h0124 state_call 15'h01ac post_bench 15'h21e8} {
+#     set_property TRIGGER_COMPARE_VALUE eq$pcval $p_pc
+#     set_property CONTROL.TRIGGER_POSITION 16 $ila
+#     run_hw_ila $ila
+#     if {[catch {wait_on_hw_ila -timeout 1 $ila}]} {
+#         puts "RESULT $label : ERROR"
+#     } else {
+#         upload_hw_ila_data $ila
+#         set n [llength [get_hw_ila_datas]]
+#         write_hw_ila_data -force -csv_file [file join $PROJ_ROOT ila_$label.csv] hw_ila_data_1
+#         puts "RESULT $label : captured -> ila_$label.csv"
+#     }
+# }
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-12 14:55:38
+wait_on_hw_ila: Time (s): cpu = 00:00:00 ; elapsed = 00:01:00 . Memory (MB): peak = 599.953 ; gain = 0.031
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-12 14:56:38
+WARNING: [Labtools 27-157] hw_ila [hw_ila_1] stopped. No data to upload.
+RESULT matrix_call : captured -> ila_matrix_call.csv
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-12 14:56:38
+wait_on_hw_ila: Time (s): cpu = 00:00:00 ; elapsed = 00:01:00 . Memory (MB): peak = 599.953 ; gain = 0.000
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-12 14:57:38
+WARNING: [Labtools 27-157] hw_ila [hw_ila_1] stopped. No data to upload.
+RESULT state_call : captured -> ila_state_call.csv
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-12 14:57:39
+wait_on_hw_ila: Time (s): cpu = 00:00:00 ; elapsed = 00:01:00 . Memory (MB): peak = 599.953 ; gain = 0.000
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-12 14:58:39
+WARNING: [Labtools 27-157] hw_ila [hw_ila_1] stopped. No data to upload.
+RESULT post_bench : captured -> ila_post_bench.csv
+# set_property TRIGGER_COMPARE_VALUE eq15'hXXXX $p_pc
+# close_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Fri Jun 12 14:58:39 2026...

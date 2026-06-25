@@ -1,0 +1,101 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Fri Jun 12 14:39:40 2026
+# Process ID         : 11148
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN
+# Command line       : vivado.exe -mode batch -source check_ila.tcl -journal ila_journal.jou -log ila_run.log
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/ila_run.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN\ila_journal.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 29889 MB
+#-----------------------------------------------------------
+source check_ila.tcl
+# set PROJ_ROOT [file dirname [info script]]
+# open_hw_manager
+open_hw_manager: Time (s): cpu = 00:00:11 ; elapsed = 00:00:07 . Memory (MB): peak = 535.906 ; gain = 223.230
+# connect_hw_server -url localhost:3121 -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 14 2025-07:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:06 . Memory (MB): peak = 539.906 ; gain = 4.000
+# set_property PARAM.FREQUENCY 500000 [lindex [get_hw_targets] 0]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210299A1F551
+# set dev [lindex [get_hw_devices xc7z030*] 0]
+# current_hw_device $dev
+# set_property PROBES.FILE [file join $PROJ_ROOT RISCV_SNN.runs impl_1 riscv_top.ltx] $dev
+# set_property FULL_PROBES.FILE [file join $PROJ_ROOT RISCV_SNN.runs impl_1 riscv_top.ltx] $dev
+# refresh_hw_device $dev
+INFO: [Labtools 27-2302] Device xc7z030 (JTAG device index = 1) is programmed with a design that has 1 ILA core(s).
+# set ila [lindex [get_hw_ilas] 0]
+# puts "ILA: $ila"
+ILA: hw_ila_1
+# set_property CONTROL.TRIGGER_POSITION 0 $ila
+# run_hw_ila $ila -trigger_now
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-12 14:40:00
+# wait_on_hw_ila $ila
+# upload_hw_ila_data $ila
+INFO: [Labtools 27-1966] The ILA core 'hw_ila_1' triggered at 2026-Jun-12 14:40:00
+# write_hw_ila_data -force -csv_file [file join $PROJ_ROOT ila_now.csv] hw_ila_data_1
+# puts "\[OK\] immediate capture -> ila_now.csv"
+[OK] immediate capture -> ila_now.csv
+# set p_uart [get_hw_probes *dbg_uart_addr* -of_objects $ila]
+# set_property TRIGGER_COMPARE_VALUE eq1'b1 $p_uart
+# set_property CONTROL.TRIGGER_POSITION 256 $ila
+# run_hw_ila $ila
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-12 14:40:01
+# puts "\[OK\] ILA armed on dbg_uart_addr==1, restarting CPU..."
+[OK] ILA armed on dbg_uart_addr==1, restarting CPU...
+# set xs [file join $PROJ_ROOT _restart_cpu.tcl]
+# set fh [open $xs w]
+# puts $fh "connect"
+# puts $fh "targets -set -filter {name =~ \"APU*\"}"
+# puts $fh "source {$PROJ_ROOT/RISCV_SNN.gen/sources_1/bd/ps_stub/ip/ps_stub_ps7_0_0/ps7_init.tcl}"
+# puts $fh "ps7_init"
+# puts $fh "ps7_post_config"
+# puts $fh "disconnect"
+# close $fh
+# catch {exec xsdb $xs} out
+# puts "xsdb: $out"
+xsdb: 
+# set fired 1
+# if {[catch {wait_on_hw_ila -timeout 2 $ila} werr]} {
+#     puts "wait_on_hw_ila: $werr"
+#     set fired 0
+# }
+wait_on_hw_ila: Time (s): cpu = 00:00:01 ; elapsed = 00:02:00 . Memory (MB): peak = 602.496 ; gain = 0.000
+# if {$fired} {
+#     upload_hw_ila_data $ila
+#     write_hw_ila_data -force -csv_file [file join $PROJ_ROOT ila_uart.csv] hw_ila_data_1
+#     puts "\[OK\] UART trigger FIRED -> ila_uart.csv"
+# } else {
+#     puts "\[NO\] UART trigger did NOT fire in 60s — CPU never writes 0x40000000"
+# }
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-12 14:42:02
+WARNING: [Labtools 27-157] hw_ila [hw_ila_1] stopped. No data to upload.
+[OK] UART trigger FIRED -> ila_uart.csv
+# close_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Fri Jun 12 14:42:03 2026...

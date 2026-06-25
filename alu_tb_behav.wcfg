@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="alu_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="alu_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="8.350001 us"></ZoomEndTime>
+      <Cursor1Time time="8.350000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="94"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject fp_name="/alu_tb/alu_en_i" type="logic">
+      <obj_property name="ElementShortName">alu_en_i</obj_property>
+      <obj_property name="ObjectShortName">alu_en_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/in1" type="array">
+      <obj_property name="ElementShortName">in1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in1[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/in2" type="array">
+      <obj_property name="ElementShortName">in2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">in2[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/alu_ctrl" type="array">
+      <obj_property name="ElementShortName">alu_ctrl[3:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_ctrl[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/alu_result" type="array">
+      <obj_property name="ElementShortName">alu_result[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_result[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/zero_o" type="logic">
+      <obj_property name="ElementShortName">zero_o</obj_property>
+      <obj_property name="ObjectShortName">zero_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/negative_o" type="logic">
+      <obj_property name="ElementShortName">negative_o</obj_property>
+      <obj_property name="ObjectShortName">negative_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/carry_o" type="logic">
+      <obj_property name="ElementShortName">carry_o</obj_property>
+      <obj_property name="ObjectShortName">carry_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/overflow_o" type="logic">
+      <obj_property name="ElementShortName">overflow_o</obj_property>
+      <obj_property name="ObjectShortName">overflow_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/rmin" type="array">
+      <obj_property name="ElementShortName">rmin[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rmin[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/rmax" type="array">
+      <obj_property name="ElementShortName">rmax[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rmax[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/check_result" type="array">
+      <obj_property name="ElementShortName">check_result[32:0]</obj_property>
+      <obj_property name="ObjectShortName">check_result[32:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/check_flag" type="array">
+      <obj_property name="ElementShortName">check_flag[3:0]</obj_property>
+      <obj_property name="ObjectShortName">check_flag[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/alu_error" type="logic">
+      <obj_property name="ElementShortName">alu_error</obj_property>
+      <obj_property name="ObjectShortName">alu_error</obj_property>
+   </wvobject>
+   <wvobject fp_name="/alu_tb/flag_error" type="logic">
+      <obj_property name="ElementShortName">flag_error</obj_property>
+      <obj_property name="ObjectShortName">flag_error</obj_property>
+   </wvobject>
+</wave_config>

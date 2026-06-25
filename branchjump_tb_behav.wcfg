@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="branchjump_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="branchjump_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="292.790 ns"></ZoomStartTime>
+      <ZoomEndTime time="350.642 ns"></ZoomEndTime>
+      <Cursor1Time time="341.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <ValueColumnWidth column_width="86"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="24" />
+   <wvobject fp_name="/branchjump_tb/pc_i" type="array">
+      <obj_property name="ElementShortName">pc_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/addr_imm_i" type="array">
+      <obj_property name="ElementShortName">addr_imm_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_imm_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/data_rs1_i" type="array">
+      <obj_property name="ElementShortName">data_rs1_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_rs1_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/branch_sel_i" type="array">
+      <obj_property name="ElementShortName">branch_sel_i[2:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_sel_i[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/jump_sel_i" type="logic">
+      <obj_property name="ElementShortName">jump_sel_i</obj_property>
+      <obj_property name="ObjectShortName">jump_sel_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/branch_en_i" type="logic">
+      <obj_property name="ElementShortName">branch_en_i</obj_property>
+      <obj_property name="ObjectShortName">branch_en_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/jump_en_i" type="logic">
+      <obj_property name="ElementShortName">jump_en_i</obj_property>
+      <obj_property name="ObjectShortName">jump_en_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/zero_i" type="logic">
+      <obj_property name="ElementShortName">zero_i</obj_property>
+      <obj_property name="ObjectShortName">zero_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/carry_i" type="logic">
+      <obj_property name="ElementShortName">carry_i</obj_property>
+      <obj_property name="ObjectShortName">carry_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/negative_i" type="logic">
+      <obj_property name="ElementShortName">negative_i</obj_property>
+      <obj_property name="ObjectShortName">negative_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/overflow_i" type="logic">
+      <obj_property name="ElementShortName">overflow_i</obj_property>
+      <obj_property name="ObjectShortName">overflow_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/pc_taken_o" type="logic">
+      <obj_property name="ElementShortName">pc_taken_o</obj_property>
+      <obj_property name="ObjectShortName">pc_taken_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/instr_mis_ex_o" type="logic">
+      <obj_property name="ElementShortName">instr_mis_ex_o</obj_property>
+      <obj_property name="ObjectShortName">instr_mis_ex_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/pc_mask_o" type="array">
+      <obj_property name="ElementShortName">pc_mask_o[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pc_mask_o[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/flags" type="array">
+      <obj_property name="ElementShortName">flags[3:0]</obj_property>
+      <obj_property name="ObjectShortName">flags[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/expected_flags" type="logic">
+      <obj_property name="ElementShortName">expected_flags</obj_property>
+      <obj_property name="ObjectShortName">expected_flags</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/expected_trap" type="logic">
+      <obj_property name="ElementShortName">expected_trap</obj_property>
+      <obj_property name="ObjectShortName">expected_trap</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/branch_error" type="logic">
+      <obj_property name="ElementShortName">branch_error</obj_property>
+      <obj_property name="ObjectShortName">branch_error</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/jump_error" type="logic">
+      <obj_property name="ElementShortName">jump_error</obj_property>
+      <obj_property name="ObjectShortName">jump_error</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/branch_out_err" type="logic">
+      <obj_property name="ElementShortName">branch_out_err</obj_property>
+      <obj_property name="ObjectShortName">branch_out_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/jump_out_err" type="logic">
+      <obj_property name="ElementShortName">jump_out_err</obj_property>
+      <obj_property name="ObjectShortName">jump_out_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/trap_trigger_err" type="logic">
+      <obj_property name="ElementShortName">trap_trigger_err</obj_property>
+      <obj_property name="ObjectShortName">trap_trigger_err</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/branch_target" type="array">
+      <obj_property name="ElementShortName">branch_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">branch_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/branchjump_tb/expected_jump" type="array">
+      <obj_property name="ElementShortName">expected_jump[31:0]</obj_property>
+      <obj_property name="ObjectShortName">expected_jump[31:0]</obj_property>
+   </wvobject>
+</wave_config>

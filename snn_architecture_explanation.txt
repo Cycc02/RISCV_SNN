@@ -1,0 +1,368 @@
+================================================================================
+  SNN_TOP.V ARCHITECTURE & SNN_CTRL.V WORKFLOW EXPLANATION
+================================================================================
+
+--------------------------------------------------------------------------------
+1. OVERVIEW
+--------------------------------------------------------------------------------
+
+snn_top.v is the top-level Spiking Neural Network (SNN) inference engine. It
+implements a 2-layer feedforward SNN for image classification:
+
+    Layer 1 (L1) : 784 input pixels  -> 64 hidden neurons
+    Layer 2 (L2) : 64 hidden neurons -> 10 output neurons (classification)
+
+The network uses a rate-coded, leaky integrate-and-fire (LIF) neuron model with
+8-bit signed weights and a firing threshold of 85. All computation is done
+combinatorially across one "inference pass" per image rather than across multiple
+biological timesteps.
+
+--------------------------------------------------------------------------------
+2. TOP-LEVEL I/O
+--------------------------------------------------------------------------------
+
+  Inputs:
+    clk_i              - System clock (100 MHz in testbench)
+    rstn_i             - Active-low synchronous reset
+    snn_en_i           - Single-cycle pulse to start a new inference
+    img_pxl_i [783:0]  - 784-bit binary image (1 bit per pixel; 1 = active)
+    timestep_i [7:0]   - Current timestep (used by STDP learning, not inference)
+
+  Outputs:
+    hidden_spike_o [63:0]  - Accumulated L1 spike results (64 hidden neurons)
+    output_spike_o  [9:0]  - Accumulated L2 classification results (10 neurons)
+    done_layer1_o          - Pulses high when all L1 computation is complete
+    done_layer2_o          - Pulses high when L2 readout is complete
+    done_learn_o           - Pulses one cycle after done_layer1 (STDP hook)
+
+--------------------------------------------------------------------------------
+3. SUBMODULE ARCHITECTURE
+--------------------------------------------------------------------------------
+
+  [img_pxl_i]
+       |
+       v
+  +----------+      active pixel addresses (10-bit)
+  | aer_scan |  ------------------------------------------->  +----------+
+  +----------+      (one address per set bit in img_pxl_i)    | aer_fifo |
+       |                                                       | (depth64)|
+       | scan_done, aer_valid                                  +----------+
+       |                                                            |
+       v                                                            | fifo_dout [9:0]
+  [scan_done_sticky latch in snn_top]                              v
+                                                             +----------+
+                                                             | snn_ctrl | <-- FSM
+                                                             +----------+
+                                                                  |
+                              ram_addr [12:0], ram_rd_en          |
+                              pe_en, stp_idx [2:0], layer_sel     |
+                              +-----------------------------------+
+                              |
+                              v
+                        +-----------+
+                        | weight_ram|  (dual_port_RAM, 64-bit x 6400 entries)
+                        | Port A    |  -> inference reads by snn_ctrl
+                        | Port B    |  -> learning_unit r/w (currently disabled)
+                        +-----------+
+                              |
+                              | ram_dout [63:0]  (8 x 8-bit weights in one word)
+                              v
+                        +--------+
+                        | simd_8 |  (8 parallel snn_pe lanes)
+                        +--------+
+                              |
+                              | spike_out [7:0]
+                              v
+                     [snn_top accumulation registers]
+                     hidden_spike_o  (L1 result, OR across groups)
+                     output_spike_o  (L2 result, OR across groups)
+
+
+3.1  aer_scan
+-------------
+  - Receives the 784-bit pixel bitmap when snn_en_i is asserted.
+  - Loads pixels into an 800-bit shift register (padded with 16 zeros).
+  - Scans 32 bits at a time (25 chunks x 32 bits = 800 bits).
+  - For each set bit found in the current 32-bit window:
+      * Computes 10-bit address = (chunk_num << 5) + first_set_bit_index
+      * Asserts aer_valid_o and outputs address on aer_data_o
+      * Clears that bit from the shift register (so it is not double-counted)
+  - Advances to the next chunk when the current window is all zeros.
+  - After all 25 chunks are processed, asserts scan_done_o for one cycle.
+  - Pauses automatically when the downstream FIFO is full (fifo_full_i=1).
+
+3.2  aer_fifo
+-------------
+  - Simple FIFO, 10-bit wide, 64 entries deep.
+  - Buffers pixel addresses between aer_scan (producer) and snn_ctrl (consumer).
+  - Decouples scanning speed from processing speed.
+  - snn_ctrl reads one address per inference iteration.
+
+3.3  dual_port_RAM (weight_ram)
+--------------------------------
+  - 64 bits wide, 6400 entries deep, true dual-port.
+  - Weight layout:
+      L1 weights (addresses 0 to 6271):
+        784 pixels x 8 words/pixel = 6272 entries
+        Each 64-bit word holds 8 x 8-bit signed weights (one per SIMD lane).
+        Pixel p, SIMD group g -> RAM[p*8 + g]
+        Neuron n is in group (n/8), lane (n%8).
+      L2 weights (addresses 6272 to 6399):
+        64 hidden neurons x 2 words/neuron = 128 entries
+        Word 0 (RAM[6272 + h*2]):   8 weights for output neurons 0-7
+        Word 1 (RAM[6272 + h*2+1]): 2 weights for output neurons 8-9 (low 2 bytes)
+  - Port A: read-only during inference (snn_ctrl drives addr/rd_en).
+  - Port B: read/write for learning_unit (currently disabled, lr_en = 0).
+
+3.4  simd_8 (8-lane SIMD Processing Engine)
+--------------------------------------------
+  - Contains 8 parallel snn_pe instances, one per output neuron lane.
+  - Each lane has a scratchpad of 8 signed 32-bit potential registers,
+    indexed by stp_idx (which SIMD group is currently being processed).
+  - On each active pe_en cycle:
+      * The 64-bit weight word from RAM is split: lane i gets bits [i*8 +: 8].
+      * Each snn_pe computes: new_potential = (potential >>> 1 if first pixel)
+                                              + weight
+      * If new_potential >= 85 (THRESHOLD): spike=1, reset potential to 0.
+      * Else: store new_potential back to scratchpad[stp_idx].
+  - is_first_pixel flag: set on snn_en_i, cleared after first full set of 8
+    groups. On the first pixel only, the existing potential is halved (leak)
+    before accumulation. This prevents stale potentials from prior inference.
+  - On layer_transition (l2_en_i): all scratchpads reset to 0, is_first_pixel
+    cleared. This ensures L2 neurons start fresh with no L1 leakage.
+
+3.5  snn_pe (Single Neuron Processing Element)
+-----------------------------------------------
+  - Combinatorial:
+      v_leaked   = leak_en_i ? (acc_i >>> 1) : acc_i
+      add_w      = v_leaked + weight_i   (spike_i is always 1 in current design)
+      spike_trig = (add_w >= THRESHOLD)
+  - Registered (on pe_en_i):
+      spike_o     <- spike_trig
+      pcache_wr_o <- 1 (tells simd_8 to write back new potential)
+      acc_o       <- 0 if spike, else add_w
+
+3.6  spike_time_mem (pre_time & pos_timestep_mem)
+--------------------------------------------------
+  - pre_time: depth=784, stores timestep_i when each pixel was scanned.
+    Written whenever aer_scan outputs a valid pixel address.
+  - pos_timestep_mem (x8): one per SIMD lane, depth=8 (one entry per group).
+    Written when a hidden neuron fires (pe_en && spike_out[i]=1).
+  - Both are read by learning_unit for STDP delta-t = t_post - t_pre.
+  - Currently unused as lr_en is tied to 0.
+
+3.7  learning_unit (STDP, currently disabled)
+----------------------------------------------
+  - Would implement Spike-Timing Dependent Plasticity:
+      delta_w = alpha * exp(-|delta_t| / TIME_WINDOW)
+      potentiation if post fires after pre, depression otherwise.
+  - Disabled by lr_en = 1'b0 in snn_top.
+
+--------------------------------------------------------------------------------
+4. DONE SIGNAL LOGIC
+--------------------------------------------------------------------------------
+
+4.1  done_layer1_o  (= done_inference)
+---------------------------------------
+  - Asserted when ALL of the following are true simultaneously:
+      * scan_done_sticky = 1   (aer_scan finished scanning all pixels)
+      * fifo_empty = 1         (all pixel addresses consumed from FIFO)
+      * pe_en = 0              (no SIMD computation in progress)
+      * pe_en_dly = 0          (no SIMD computation pending from last cycle)
+      * fifo_rd_en = 0         (ctrl not currently reading the FIFO)
+      * layer_sel = 0          (still in L1 mode, not L2)
+  - scan_done_sticky latches scan_done and holds it; it self-clears when
+    done_inference fires (preventing it from re-triggering during L2).
+
+4.2  done_layer2_o
+-------------------
+  - Asserted for one cycle on the falling edge of layer_sel:
+      done_layer2_o = layer_sel_prev & ~layer_sel
+  - This happens when snn_ctrl transitions from READOUT back to IDLE,
+    which resets layer_idx = 0, which drives layer_sel low.
+
+4.3  done_learn_o
+------------------
+  - start_stdp is registered one cycle after done_inference.
+  - This gives a hook for triggering STDP but is currently unused.
+
+--------------------------------------------------------------------------------
+5. SPIKE ACCUMULATION LOGIC
+--------------------------------------------------------------------------------
+
+5.1  hidden_spike_o [63:0]  (L1 result)
+-----------------------------------------
+  - Updated one clock after pe_en fires during L1 (pe_en_dly && !layer_sel_prev).
+  - 8 hidden neurons are accumulated per SIMD group cycle:
+      hidden_spike_o[(stp_idx_dly*8) +: 8] |= spike_out[7:0]
+  - OR accumulation means: if a neuron spikes on ANY pixel input, it is marked.
+  - Reset to 0 on snn_en_i (new inference) or after done_inference.
+
+5.2  output_spike_o [9:0]  (L2 result)
+----------------------------------------
+  - Updated one clock after pe_en fires during L2 (pe_en_dly && layer_sel_prev).
+  - stp_idx_dly=0: output neurons 0-7  <- spike_out[7:0]
+  - stp_idx_dly=1: output neurons 8-9  <- spike_out[1:0]
+  - Also OR-accumulated and reset on snn_en_i.
+
+--------------------------------------------------------------------------------
+6. SNN_CTRL.V FSM WORKFLOW
+--------------------------------------------------------------------------------
+
+States:
+  IDLE    (3'd0) - Waiting for data in AER FIFO
+  FETCH   (3'd1) - Assert fifo_rd_en, stall one cycle for FIFO output to settle
+  DEC     (3'd2) - Decode/latch the active pixel (L1) or scan for next set bit (L2)
+  EXEC    (3'd3) - Drive RAM reads + pe_en to SIMD engine
+  READOUT (3'd4) - L2 complete; reset layer and return to IDLE
+  L2_INIT (3'd5) - 2-cycle settle window between L1 and L2 processing
+
+Key internal registers:
+  spike_address [9:0]   - Pixel address latched from FIFO (L1 only)
+  loop_count    [3:0]   - Cycle counter within EXEC (0 to 8 for L1, 0 to 2 for L2)
+  l1_spike_buffer[63:0] - Copy of hidden_spike_o used to iterate active L2 spikes
+  l1_spike_id   [5:0]   - Current hidden neuron index (bit position in buffer)
+  layer_idx              - 0=L1, 1=L2
+  l2_init_wait           - Controls the 2-cycle settle in L2_INIT
+
+------------------------------------------------------------------------
+6.1  L1 PROCESSING WORKFLOW (one active pixel)
+------------------------------------------------------------------------
+
+Step 1: IDLE
+  - Poll fifo_empty_i every cycle.
+  - When FIFO has data: assert fifo_rd_en_o=1, go to FETCH.
+
+Step 2: FETCH
+  - One dead cycle for the FIFO to put data on fifo_data_o.
+  - Go to DEC.
+
+Step 3: DEC
+  - Latch fifo_data_i (pixel address 0-783) into spike_address.
+  - Go to EXEC.
+
+Step 4: EXEC (loop_count 0 to 8, 9 cycles total)
+  loop_count=0: ram_addr = spike_address*8 + 0  -> reads group 0 weights
+  loop_count=1: ram_addr = spike_address*8 + 1, pe_en=1, stp_idx=0
+                 (SIMD processes group 0 with data fetched last cycle)
+  loop_count=2: ram_addr = spike_address*8 + 2, pe_en=1, stp_idx=1
+  ...
+  loop_count=7: ram_addr = spike_address*8 + 7, pe_en=1, stp_idx=6
+  loop_count=8: pe_en=1, stp_idx=7  (no new fetch needed)
+                If FIFO not empty: fifo_rd_en=1, go to FETCH (next pixel)
+                If FIFO empty:     go to L2_INIT (all pixels done)
+
+  The 1-cycle RAM latency means: fetch at cycle N -> SIMD uses data at cycle N+1.
+  pe_en is offset by 1 from the fetch to align with data availability.
+
+------------------------------------------------------------------------
+6.2  L2_INIT (2-cycle settle between L1 and L2)
+------------------------------------------------------------------------
+
+  Why needed: At the moment the last L1 EXEC completes (loop_count=8),
+  pe_en was just asserted. snn_top's accumulation register (hidden_spike_o)
+  updates one cycle AFTER pe_en (pe_en_dly). So we must wait 2 cycles before
+  hidden_spike_o is stable and can be latched for L2.
+
+  Cycle 1 (l2_init_wait=1):
+    - FSM stays in L2_INIT.
+    - l2_init_wait is cleared to 0.
+    - hidden_spike_o is still being written this cycle (pe_en_dly fires now).
+
+  Cycle 2 (l2_init_wait=0):
+    - l1_spike_buffer <- pe_spikes_out_i  (now fully stable hidden_spike_o)
+    - l1_spike_id     <- 0
+    - layer_idx       <- 1  (switch to L2 mode)
+    - Go to DEC.
+
+------------------------------------------------------------------------
+6.3  L2 PROCESSING WORKFLOW (one active hidden neuron)
+------------------------------------------------------------------------
+
+Step 1: DEC
+  - Inspect l1_spike_buffer[0]:
+      = 1: found an active hidden neuron, go to EXEC.
+      = 0: shift buffer right by 1 (l1_spike_buffer >>= 1), increment l1_spike_id,
+           stay in DEC (try next bit).
+      buffer = 0: no more active neurons, go to READOUT.
+
+Step 2: EXEC (loop_count 0 to 2, 3 cycles total)
+  loop_count=0: ram_addr = 6272 + l1_spike_id*2 + 0  (reads L2 word 0)
+  loop_count=1: ram_addr = 6272 + l1_spike_id*2 + 1, pe_en=1, stp_idx=0
+                (SIMD lane 0-7 integrate weights for output neurons 0-7)
+  loop_count=2: pe_en=1, stp_idx=1
+                (SIMD lane 0-1 integrate weights for output neurons 8-9)
+                Shift l1_spike_buffer >>= 1, increment l1_spike_id.
+                Go to DEC (find next active hidden neuron).
+
+Step 3: READOUT
+  - l1_spike_buffer is empty (all hidden neurons processed).
+  - Reset layer_idx = 0.
+  - Go to IDLE.
+  - This falling edge of layer_sel triggers done_layer2_o in snn_top.
+
+------------------------------------------------------------------------
+6.4  COMPLETE INFERENCE SEQUENCE SUMMARY
+------------------------------------------------------------------------
+
+  1. snn_en_i pulse:
+     - aer_scan starts scanning img_pxl_i.
+     - simd_8 resets all scratchpads and is_first_pixel is set.
+     - hidden_spike_o and output_spike_o are cleared.
+
+  2. L1 phase:
+     - aer_scan emits active pixel addresses to AER FIFO.
+     - snn_ctrl processes each address: IDLE->FETCH->DEC->EXEC (9 cycles).
+     - For each pixel, simd_8 integrates 64 weights (8 groups x 8 lanes).
+     - hidden_spike_o accumulates spike_out via OR for each group.
+
+  3. L2_INIT (2 cycles):
+     - Waits for hidden_spike_o to fully settle.
+     - Latches hidden_spike_o into l1_spike_buffer.
+     - Switches to layer_idx=1 (L2 mode).
+     - simd_8 scratchpads reset (l2_en_i = layer_transition pulse).
+
+  4. L2 phase:
+     - snn_ctrl iterates over bits of l1_spike_buffer.
+     - For each active hidden neuron: DEC->EXEC (3 cycles).
+     - Processes 2 weight words: 8 weights for neurons 0-7, 2 for neurons 8-9.
+     - output_spike_o accumulates spike_out via OR.
+
+  5. Completion:
+     - done_layer1_o fires at the end of L1 (before L2_INIT starts settling).
+     - done_layer2_o fires when snn_ctrl returns from READOUT to IDLE.
+
+--------------------------------------------------------------------------------
+7. KEY DESIGN DECISIONS
+--------------------------------------------------------------------------------
+
+  - AER encoding: Only active (=1) pixels are processed. Sparse images are
+    much faster because snn_ctrl only runs EXEC for pixels that are actually
+    set. An all-zero image results in scan_done firing immediately with no
+    EXEC cycles.
+
+  - SIMD grouping: 64 hidden neurons are split into 8 groups of 8 (stp_idx 0-7).
+    All 8 neurons in a group are computed in parallel. A single 64-bit RAM
+    read delivers weights for all 8 neurons in one cycle. This is why L1 EXEC
+    needs exactly 8 RAM reads per pixel.
+
+  - spike_i is always 1: The snn_pe's spike_i input is hardwired to 1'b1 in
+    snn_ctrl (assign spike_o = 1'b1). This means weight is always added when
+    pe_en is asserted. The "spike" is encoded by whether or not pe_en fires,
+    not by an explicit spike signal. This works because snn_ctrl only asserts
+    pe_en when a pixel IS active (fetched from the AER FIFO).
+
+  - 1-cycle RAM latency alignment: snn_ctrl starts reading RAM at loop_count=0
+    but only enables pe_en at loop_count=1. This 1-cycle offset accounts for
+    the registered output of the dual_port_RAM.
+
+  - L2_INIT 2-cycle wait: The hidden_spike_o register in snn_top updates one
+    cycle after pe_en_dly (which itself is pe_en delayed by 1). Two cycles are
+    needed to guarantee hidden_spike_o is stable before snn_ctrl latches it.
+
+  - done_layer1_o guard (& ~layer_sel): Without this, the done signal could
+    re-fire during L2's DEC idle cycles when the FIFO is briefly empty.
+
+================================================================================
+END OF DOCUMENT
+================================================================================

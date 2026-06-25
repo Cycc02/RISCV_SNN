@@ -1,0 +1,643 @@
+Time resolution is 1 ps
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.M_AXI_GP0.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.M_AXI_GP1.master
+[0] : *ZYNQ_VIP_INFO : M_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_GP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP0 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_GP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_GP1 : Port is DISABLED.
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_HP0.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP0 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_HP1.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP1 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_HP2.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP2 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_HP3.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_HP3 : Port is DISABLED.
+                   0 BEFORE checking line ...... x
+                   0 AFTER checking line ...... x
+XilinxAXIVIP: Found at Path: snn_e2e_tb.dut.u_ps_stub.ps_stub_i.ps7_0.inst.S_AXI_ACP.slave
+[0] : *ZYNQ_VIP_INFO : S_AXI_ACP : Port is DISABLED.
+=== SNN end-to-end simulation ===
+                   0 else checking line ......x
+[195 ns] Reset released.
+
+=== SNN end-to-end demo ===
+Image word index in DTCM: 0x0000004C
+True label: 3
+[8205 ns] cy800 CSR access: ctrl=2 we=0 addr=0xc00 csr_i=0x00000320 csr_o=0x00000320
+[8215 ns] cy801 CSR access: ctrl=1 we=1 addr=0xbc0 csr_i=0x0000004c csr_o=0x00000000
+[8235 ns] cy803 CSR access: ctrl=1 we=1 addr=0xbc2 csr_i=0x00000001 csr_o=0x00000000
+[8245 ns] cycle 804: snn_busy 0 -> 1 (kick=1 done=0)
+[8245 ns] SNN kicked at cycle 804
+[8255 ns] cy805 poll BC2 csr_o=0x00000001
+[8425 ns] cy822 snn_state 0->1 chunk=4 fifo_empty=0 sticky=0
+[8435 ns] cy823 snn_state 1->2 chunk=4 fifo_empty=0 sticky=0
+[8445 ns] cy824 snn_state 2->3 chunk=4 fifo_empty=0 sticky=0
+[8535 ns] cy833 snn_state 3->1 chunk=5 fifo_empty=0 sticky=0
+[8545 ns] cy834 snn_state 1->2 chunk=5 fifo_empty=0 sticky=0
+[8555 ns] cy835 snn_state 2->3 chunk=5 fifo_empty=0 sticky=0
+[8645 ns] cy844 snn_state 3->1 chunk=5 fifo_empty=0 sticky=0
+[8655 ns] cy845 snn_state 1->2 chunk=6 fifo_empty=0 sticky=0
+[8665 ns] cy846 snn_state 2->3 chunk=6 fifo_empty=0 sticky=0
+[8755 ns] cy855 snn_state 3->1 chunk=6 fifo_empty=0 sticky=0
+[8765 ns] cy856 snn_state 1->2 chunk=6 fifo_empty=0 sticky=0
+[8775 ns] cy857 snn_state 2->3 chunk=6 fifo_empty=0 sticky=0
+[8865 ns] cy866 snn_state 3->1 chunk=7 fifo_empty=0 sticky=0
+[8875 ns] cy867 snn_state 1->2 chunk=7 fifo_empty=0 sticky=0
+[8885 ns] cy868 snn_state 2->3 chunk=7 fifo_empty=0 sticky=0
+[8975 ns] cy877 snn_state 3->1 chunk=8 fifo_empty=0 sticky=0
+[8985 ns] cy878 snn_state 1->2 chunk=8 fifo_empty=0 sticky=0
+[8995 ns] cy879 snn_state 2->3 chunk=8 fifo_empty=0 sticky=0
+[9085 ns] cy888 snn_state 3->1 chunk=10 fifo_empty=0 sticky=0
+[9095 ns] cy889 snn_state 1->2 chunk=10 fifo_empty=0 sticky=0
+[9105 ns] cy890 snn_state 2->3 chunk=10 fifo_empty=0 sticky=0
+[9195 ns] cy899 snn_state 3->1 chunk=11 fifo_empty=0 sticky=0
+[9205 ns] cy900 snn_state 1->2 chunk=11 fifo_empty=0 sticky=0
+[9215 ns] cy901 snn_state 2->3 chunk=11 fifo_empty=0 sticky=0
+[9305 ns] cy910 snn_state 3->1 chunk=11 fifo_empty=0 sticky=0
+[9315 ns] cy911 snn_state 1->2 chunk=11 fifo_empty=0 sticky=0
+[9325 ns] cy912 snn_state 2->3 chunk=11 fifo_empty=0 sticky=0
+[9415 ns] cy921 snn_state 3->1 chunk=11 fifo_empty=0 sticky=0
+[9425 ns] cy922 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9435 ns] cy923 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[9525 ns] cy932 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[9535 ns] cy933 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9545 ns] cy934 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[9635 ns] cy943 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[9645 ns] cy944 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9655 ns] cy945 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[9745 ns] cy954 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[9755 ns] cy955 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9765 ns] cy956 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[9855 ns] cy965 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[9865 ns] cy966 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9875 ns] cy967 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[9965 ns] cy976 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[9975 ns] cy977 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[9985 ns] cy978 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10075 ns] cy987 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10085 ns] cy988 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10095 ns] cy989 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10185 ns] cy998 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10195 ns] cy999 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10205 ns] cy1000 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10295 ns] cy1009 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10305 ns] cy1010 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10315 ns] cy1011 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10405 ns] cy1020 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10415 ns] cy1021 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10425 ns] cy1022 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10515 ns] cy1031 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10525 ns] cy1032 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10535 ns] cy1033 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10625 ns] cy1042 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10635 ns] cy1043 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10645 ns] cy1044 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10735 ns] cy1053 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10745 ns] cy1054 snn_state 1->2 chunk=12 fifo_empty=0 sticky=0
+[10755 ns] cy1055 snn_state 2->3 chunk=12 fifo_empty=0 sticky=0
+[10845 ns] cy1064 snn_state 3->1 chunk=12 fifo_empty=0 sticky=0
+[10855 ns] cy1065 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[10865 ns] cy1066 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[10955 ns] cy1075 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[10965 ns] cy1076 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[10975 ns] cy1077 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11065 ns] cy1086 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11075 ns] cy1087 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11085 ns] cy1088 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11175 ns] cy1097 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11185 ns] cy1098 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11195 ns] cy1099 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11285 ns] cy1108 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11295 ns] cy1109 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11305 ns] cy1110 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11395 ns] cy1119 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11405 ns] cy1120 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11415 ns] cy1121 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11505 ns] cy1130 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11515 ns] cy1131 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11525 ns] cy1132 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11615 ns] cy1141 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11625 ns] cy1142 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11635 ns] cy1143 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11725 ns] cy1152 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11735 ns] cy1153 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11745 ns] cy1154 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11835 ns] cy1163 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11845 ns] cy1164 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11855 ns] cy1165 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[11945 ns] cy1174 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[11955 ns] cy1175 snn_state 1->2 chunk=13 fifo_empty=0 sticky=0
+[11965 ns] cy1176 snn_state 2->3 chunk=13 fifo_empty=0 sticky=0
+[12055 ns] cy1185 snn_state 3->1 chunk=13 fifo_empty=0 sticky=0
+[12065 ns] cy1186 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12075 ns] cy1187 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12165 ns] cy1196 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12175 ns] cy1197 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12185 ns] cy1198 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12275 ns] cy1207 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12285 ns] cy1208 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12295 ns] cy1209 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12385 ns] cy1218 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12395 ns] cy1219 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12405 ns] cy1220 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12495 ns] cy1229 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12505 ns] cy1230 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12515 ns] cy1231 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12605 ns] cy1240 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12615 ns] cy1241 snn_state 1->2 chunk=14 fifo_empty=0 sticky=0
+[12625 ns] cy1242 snn_state 2->3 chunk=14 fifo_empty=0 sticky=0
+[12715 ns] cy1251 snn_state 3->1 chunk=14 fifo_empty=0 sticky=0
+[12725 ns] cy1252 snn_state 1->2 chunk=15 fifo_empty=0 sticky=0
+[12735 ns] cy1253 snn_state 2->3 chunk=15 fifo_empty=0 sticky=0
+[12825 ns] cy1262 snn_state 3->1 chunk=15 fifo_empty=0 sticky=0
+[12835 ns] cy1263 snn_state 1->2 chunk=15 fifo_empty=0 sticky=0
+[12845 ns] cy1264 snn_state 2->3 chunk=15 fifo_empty=0 sticky=0
+[12935 ns] cy1273 snn_state 3->1 chunk=15 fifo_empty=0 sticky=0
+[12945 ns] cy1274 snn_state 1->2 chunk=15 fifo_empty=0 sticky=0
+[12955 ns] cy1275 snn_state 2->3 chunk=15 fifo_empty=0 sticky=0
+[13045 ns] cy1284 snn_state 3->1 chunk=15 fifo_empty=0 sticky=0
+[13055 ns] cy1285 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13065 ns] cy1286 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13155 ns] cy1295 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13165 ns] cy1296 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13175 ns] cy1297 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13265 ns] cy1306 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13275 ns] cy1307 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13285 ns] cy1308 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13375 ns] cy1317 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13385 ns] cy1318 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13395 ns] cy1319 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13485 ns] cy1328 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13495 ns] cy1329 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13505 ns] cy1330 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13595 ns] cy1339 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13605 ns] cy1340 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13615 ns] cy1341 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13705 ns] cy1350 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13715 ns] cy1351 snn_state 1->2 chunk=16 fifo_empty=0 sticky=0
+[13725 ns] cy1352 snn_state 2->3 chunk=16 fifo_empty=0 sticky=0
+[13815 ns] cy1361 snn_state 3->1 chunk=16 fifo_empty=0 sticky=0
+[13825 ns] cy1362 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[13835 ns] cy1363 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[13925 ns] cy1372 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[13935 ns] cy1373 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[13945 ns] cy1374 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14035 ns] cy1383 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14045 ns] cy1384 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[14055 ns] cy1385 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14145 ns] cy1394 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14155 ns] cy1395 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[14165 ns] cy1396 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14255 ns] cy1405 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14265 ns] cy1406 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[14275 ns] cy1407 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14365 ns] cy1416 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14375 ns] cy1417 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[14385 ns] cy1418 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14475 ns] cy1427 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14485 ns] cy1428 snn_state 1->2 chunk=17 fifo_empty=0 sticky=0
+[14495 ns] cy1429 snn_state 2->3 chunk=17 fifo_empty=0 sticky=0
+[14585 ns] cy1438 snn_state 3->1 chunk=17 fifo_empty=0 sticky=0
+[14595 ns] cy1439 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[14605 ns] cy1440 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[14695 ns] cy1449 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[14705 ns] cy1450 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[14715 ns] cy1451 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[14805 ns] cy1460 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[14815 ns] cy1461 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[14825 ns] cy1462 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[14915 ns] cy1471 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[14925 ns] cy1472 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[14935 ns] cy1473 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15025 ns] cy1482 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15035 ns] cy1483 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15045 ns] cy1484 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15135 ns] cy1493 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15145 ns] cy1494 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15155 ns] cy1495 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15245 ns] cy1504 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15255 ns] cy1505 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15265 ns] cy1506 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15355 ns] cy1515 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15365 ns] cy1516 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15375 ns] cy1517 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15465 ns] cy1526 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15475 ns] cy1527 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15485 ns] cy1528 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15575 ns] cy1537 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15585 ns] cy1538 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15595 ns] cy1539 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15685 ns] cy1548 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15695 ns] cy1549 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15705 ns] cy1550 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15795 ns] cy1559 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15805 ns] cy1560 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15815 ns] cy1561 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[15905 ns] cy1570 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[15915 ns] cy1571 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[15925 ns] cy1572 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[16015 ns] cy1581 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[16025 ns] cy1582 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[16035 ns] cy1583 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[16125 ns] cy1592 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[16135 ns] cy1593 snn_state 1->2 chunk=18 fifo_empty=0 sticky=0
+[16145 ns] cy1594 snn_state 2->3 chunk=18 fifo_empty=0 sticky=0
+[16235 ns] cy1603 snn_state 3->1 chunk=18 fifo_empty=0 sticky=0
+[16245 ns] cy1604 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16255 ns] cy1605 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16345 ns] cy1614 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16355 ns] cy1615 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16365 ns] cy1616 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16455 ns] cy1625 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16465 ns] cy1626 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16475 ns] cy1627 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16565 ns] cy1636 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16575 ns] cy1637 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16585 ns] cy1638 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16675 ns] cy1647 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16685 ns] cy1648 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16695 ns] cy1649 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16785 ns] cy1658 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16795 ns] cy1659 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16805 ns] cy1660 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[16895 ns] cy1669 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[16905 ns] cy1670 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[16915 ns] cy1671 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17005 ns] cy1680 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17015 ns] cy1681 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[17025 ns] cy1682 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17115 ns] cy1691 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17125 ns] cy1692 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[17135 ns] cy1693 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17225 ns] cy1702 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17235 ns] cy1703 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[17245 ns] cy1704 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17335 ns] cy1713 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17345 ns] cy1714 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[17355 ns] cy1715 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17445 ns] cy1724 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17455 ns] cy1725 snn_state 1->2 chunk=19 fifo_empty=0 sticky=0
+[17465 ns] cy1726 snn_state 2->3 chunk=19 fifo_empty=0 sticky=0
+[17555 ns] cy1735 snn_state 3->1 chunk=19 fifo_empty=0 sticky=0
+[17565 ns] cy1736 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[17575 ns] cy1737 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[17665 ns] cy1746 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[17675 ns] cy1747 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[17685 ns] cy1748 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[17775 ns] cy1757 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[17785 ns] cy1758 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[17795 ns] cy1759 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[17885 ns] cy1768 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[17895 ns] cy1769 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[17905 ns] cy1770 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[17995 ns] cy1779 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18005 ns] cy1780 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[18015 ns] cy1781 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[18105 ns] cy1790 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18115 ns] cy1791 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[18125 ns] cy1792 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[18215 ns] cy1801 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18225 ns] cy1802 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[18235 ns] cy1803 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[18325 ns] cy1812 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18335 ns] cy1813 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[18345 ns] cy1814 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[18435 ns] cy1823 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18445 ns] cy1824 snn_state 1->2 chunk=20 fifo_empty=0 sticky=0
+[18455 ns] cy1825 snn_state 2->3 chunk=20 fifo_empty=0 sticky=0
+[18545 ns] cy1834 snn_state 3->1 chunk=20 fifo_empty=0 sticky=0
+[18555 ns] cy1835 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[18565 ns] cy1836 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[18655 ns] cy1845 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[18665 ns] cy1846 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[18675 ns] cy1847 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[18765 ns] cy1856 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[18775 ns] cy1857 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[18785 ns] cy1858 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[18875 ns] cy1867 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[18885 ns] cy1868 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[18895 ns] cy1869 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[18985 ns] cy1878 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[18995 ns] cy1879 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[19005 ns] cy1880 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[19095 ns] cy1889 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[19105 ns] cy1890 snn_state 1->2 chunk=21 fifo_empty=0 sticky=0
+[19115 ns] cy1891 snn_state 2->3 chunk=21 fifo_empty=0 sticky=0
+[19205 ns] cy1900 snn_state 3->1 chunk=21 fifo_empty=0 sticky=0
+[19215 ns] cy1901 snn_state 1->2 chunk=22 fifo_empty=0 sticky=0
+[19225 ns] cy1902 snn_state 2->3 chunk=22 fifo_empty=0 sticky=0
+[19315 ns] cy1911 snn_state 3->1 chunk=22 fifo_empty=0 sticky=0
+[19325 ns] cy1912 snn_state 1->2 chunk=23 fifo_empty=0 sticky=0
+[19335 ns] cy1913 snn_state 2->3 chunk=23 fifo_empty=0 sticky=0
+[19385 ns] cy1918 snn_scan_done rising
+[19425 ns] cy1922 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19435 ns] cy1923 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19445 ns] cy1924 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[19535 ns] cy1933 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19545 ns] cy1934 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19555 ns] cy1935 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[19645 ns] cy1944 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19655 ns] cy1945 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19665 ns] cy1946 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[19755 ns] cy1955 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19765 ns] cy1956 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19775 ns] cy1957 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[19865 ns] cy1966 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19875 ns] cy1967 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19885 ns] cy1968 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[19975 ns] cy1977 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[19985 ns] cy1978 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[19995 ns] cy1979 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20085 ns] cy1988 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20095 ns] cy1989 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20105 ns] cy1990 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20195 ns] cy1999 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20205 ns] cy2000 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20215 ns] cy2001 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20305 ns] cy2010 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20315 ns] cy2011 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20325 ns] cy2012 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20415 ns] cy2021 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20425 ns] cy2022 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20435 ns] cy2023 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20525 ns] cy2032 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20535 ns] cy2033 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20545 ns] cy2034 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20635 ns] cy2043 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20645 ns] cy2044 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20655 ns] cy2045 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20745 ns] cy2054 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20755 ns] cy2055 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20765 ns] cy2056 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20855 ns] cy2065 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20865 ns] cy2066 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20875 ns] cy2067 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[20965 ns] cy2076 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[20975 ns] cy2077 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[20985 ns] cy2078 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21075 ns] cy2087 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21085 ns] cy2088 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21095 ns] cy2089 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21185 ns] cy2098 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21195 ns] cy2099 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21205 ns] cy2100 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21295 ns] cy2109 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21305 ns] cy2110 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21315 ns] cy2111 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21405 ns] cy2120 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21415 ns] cy2121 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21425 ns] cy2122 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21515 ns] cy2131 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21525 ns] cy2132 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21535 ns] cy2133 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21625 ns] cy2142 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21635 ns] cy2143 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21645 ns] cy2144 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21735 ns] cy2153 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21745 ns] cy2154 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21755 ns] cy2155 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21845 ns] cy2164 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21855 ns] cy2165 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21865 ns] cy2166 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[21955 ns] cy2175 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[21965 ns] cy2176 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[21975 ns] cy2177 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22065 ns] cy2186 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22075 ns] cy2187 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22085 ns] cy2188 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22175 ns] cy2197 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22185 ns] cy2198 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22195 ns] cy2199 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22285 ns] cy2208 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22295 ns] cy2209 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22305 ns] cy2210 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22395 ns] cy2219 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22405 ns] cy2220 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22415 ns] cy2221 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22505 ns] cy2230 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22515 ns] cy2231 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22525 ns] cy2232 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22615 ns] cy2241 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22625 ns] cy2242 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22635 ns] cy2243 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22725 ns] cy2252 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22735 ns] cy2253 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22745 ns] cy2254 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22835 ns] cy2263 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22845 ns] cy2264 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22855 ns] cy2265 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[22945 ns] cy2274 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[22955 ns] cy2275 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[22965 ns] cy2276 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23055 ns] cy2285 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23065 ns] cy2286 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23075 ns] cy2287 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23165 ns] cy2296 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23175 ns] cy2297 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23185 ns] cy2298 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23275 ns] cy2307 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23285 ns] cy2308 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23295 ns] cy2309 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23385 ns] cy2318 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23395 ns] cy2319 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23405 ns] cy2320 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23495 ns] cy2329 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23505 ns] cy2330 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23515 ns] cy2331 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23605 ns] cy2340 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23615 ns] cy2341 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23625 ns] cy2342 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23715 ns] cy2351 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23725 ns] cy2352 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23735 ns] cy2353 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23825 ns] cy2362 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23835 ns] cy2363 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23845 ns] cy2364 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[23935 ns] cy2373 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[23945 ns] cy2374 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[23955 ns] cy2375 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24045 ns] cy2384 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24055 ns] cy2385 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24065 ns] cy2386 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24155 ns] cy2395 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24165 ns] cy2396 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24175 ns] cy2397 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24265 ns] cy2406 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24275 ns] cy2407 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24285 ns] cy2408 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24375 ns] cy2417 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24385 ns] cy2418 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24395 ns] cy2419 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24485 ns] cy2428 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24495 ns] cy2429 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24505 ns] cy2430 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24595 ns] cy2439 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24605 ns] cy2440 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24615 ns] cy2441 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24705 ns] cy2450 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24715 ns] cy2451 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24725 ns] cy2452 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24815 ns] cy2461 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24825 ns] cy2462 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24835 ns] cy2463 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[24925 ns] cy2472 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[24935 ns] cy2473 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[24945 ns] cy2474 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25035 ns] cy2483 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25045 ns] cy2484 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25055 ns] cy2485 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25145 ns] cy2494 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25155 ns] cy2495 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25165 ns] cy2496 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25255 ns] cy2505 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25265 ns] cy2506 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25275 ns] cy2507 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25365 ns] cy2516 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25375 ns] cy2517 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25385 ns] cy2518 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25475 ns] cy2527 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25485 ns] cy2528 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25495 ns] cy2529 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25585 ns] cy2538 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25595 ns] cy2539 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25605 ns] cy2540 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25695 ns] cy2549 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25705 ns] cy2550 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25715 ns] cy2551 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25805 ns] cy2560 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25815 ns] cy2561 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25825 ns] cy2562 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[25915 ns] cy2571 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[25925 ns] cy2572 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[25935 ns] cy2573 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[26025 ns] cy2582 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[26035 ns] cy2583 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[26045 ns] cy2584 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[26135 ns] cy2593 snn_state 3->1 chunk=24 fifo_empty=0 sticky=1
+[26145 ns] cy2594 snn_state 1->2 chunk=24 fifo_empty=0 sticky=1
+[26155 ns] cy2595 snn_state 2->3 chunk=24 fifo_empty=0 sticky=1
+[26245 ns] cy2604 snn_state 3->1 chunk=24 fifo_empty=1 sticky=1
+[26255 ns] cy2605 snn_state 1->2 chunk=24 fifo_empty=1 sticky=1
+[26265 ns] cy2606 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26355 ns] cy2615 snn_state 3->6 chunk=24 fifo_empty=1 sticky=0
+[26355 ns] cy2615 snn_eval_l1   0->1
+[26445 ns] cy2624 snn_state 6->5 chunk=24 fifo_empty=1 sticky=0
+[26445 ns] cy2624 snn_eval_l1   1->0
+[26465 ns] cy2626 snn_state 5->2 chunk=24 fifo_empty=1 sticky=0
+[26465 ns] cy2626 snn_layer_sel 0->1
+[26535 ns] cy2633 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26565 ns] cy2636 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26575 ns] cy2637 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26605 ns] cy2640 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26625 ns] cy2642 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26655 ns] cy2645 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26675 ns] cy2647 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26705 ns] cy2650 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26745 ns] cy2654 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26775 ns] cy2657 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26785 ns] cy2658 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26815 ns] cy2661 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26825 ns] cy2662 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26855 ns] cy2665 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26885 ns] cy2668 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26915 ns] cy2671 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26935 ns] cy2673 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[26965 ns] cy2676 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[26985 ns] cy2678 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27015 ns] cy2681 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27025 ns] cy2682 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27055 ns] cy2685 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27065 ns] cy2686 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27095 ns] cy2689 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27125 ns] cy2692 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27155 ns] cy2695 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27175 ns] cy2697 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27205 ns] cy2700 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27215 ns] cy2701 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27245 ns] cy2704 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27295 ns] cy2709 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27325 ns] cy2712 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27335 ns] cy2713 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27365 ns] cy2716 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27375 ns] cy2717 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27405 ns] cy2720 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27415 ns] cy2721 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27445 ns] cy2724 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27455 ns] cy2725 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27485 ns] cy2728 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27495 ns] cy2729 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27525 ns] cy2732 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27535 ns] cy2733 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27565 ns] cy2736 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27575 ns] cy2737 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27605 ns] cy2740 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27635 ns] cy2743 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27665 ns] cy2746 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27675 ns] cy2747 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27705 ns] cy2750 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27715 ns] cy2751 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27745 ns] cy2754 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27755 ns] cy2755 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27785 ns] cy2758 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27805 ns] cy2760 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27835 ns] cy2763 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27865 ns] cy2766 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27895 ns] cy2769 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27935 ns] cy2773 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[27965 ns] cy2776 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[27975 ns] cy2777 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[28005 ns] cy2780 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[28015 ns] cy2781 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[28045 ns] cy2784 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[28055 ns] cy2785 snn_state 2->3 chunk=24 fifo_empty=1 sticky=0
+[28085 ns] cy2788 snn_state 3->2 chunk=24 fifo_empty=1 sticky=0
+[28095 ns] cy2789 snn_state 2->4 chunk=24 fifo_empty=1 sticky=0
+[28105 ns] cy2790 snn_state 4->0 chunk=24 fifo_empty=1 sticky=0
+[28105 ns] cy2790 snn_layer_sel 1->0
+[28105 ns] cycle 2790: snn_done rising edge
+[28105 ns] SNN done_layer2 at cycle 2790 (SNN busy = 1986 cycles)
+[28115 ns] cycle 2791: snn_busy 1 -> 0 (kick=0 done=0)
+[28275 ns] cy2807 CSR access: ctrl=2 we=0 addr=0xc00 csr_i=0x00000af7 csr_o=0x00000af7
+[28285 ns] cy2808 CSR access: ctrl=2 we=0 addr=0xbc3 csr_i=0x00000008 csr_o=0x00000008
+[28305 ns] cy2810 CSR access: ctrl=2 we=0 addr=0xbc4 csr_i=0xa7538ac0 csr_o=0xa7538ac0
+[28315 ns] cy2811 CSR access: ctrl=2 we=0 addr=0xbc5 csr_i=0x78979fe1 csr_o=0x78979fe1
+
+--- SNN result ---
+Output spikes (10b): 0x00000008
+Hidden spikes hi/lo: 0x78979FE1 0xA7538AC0
+Predicted class: 3
+
+--- Cycle accounting ---
+SNN busy cycles  : 2007
+CPU parallel iters: 111
+CPU checksum     : 0x6C748690
+=== Demo complete ===
+
+[DONE] UART quiet for 5K cycles after last byte.
+
+----- Summary -----
+  Cycles total                : 55997
+  SNN inference window        : 1986 cycles
+  CPU retire (total)          : 2789
+  CPU retire while SNN busy   : 1327
+  Final output_spike (10b)    : 0000001000
+  Final hidden_spike (64b)    : 0111100010010111100111111110000110100111010100111000101011000000
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+Executing Axi4 End Of Simulation checks
+$finish called at time : 561175 ns : File "C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sim_1/new/snn_e2e_tb.v" Line 232

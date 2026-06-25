@@ -1,0 +1,89 @@
+
+****** Vivado v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Mon Jun 15 16:17:44 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source program_coremark_test.tcl
+# set PROJ_ROOT [file dirname [info script]]
+# set BITFILE   [file join $PROJ_ROOT _coremark riscv_top_coremark.bit]
+# set LTXFILE   [file join $PROJ_ROOT _coremark riscv_top_coremark.ltx]
+# set PS7_INIT  [file join $PROJ_ROOT RISCV_SNN.gen sources_1 bd ps_stub ip \
+#                    ps_stub_ps7_0_0 ps7_init.tcl]
+# open_hw_manager
+open_hw_manager: Time (s): cpu = 00:00:12 ; elapsed = 00:00:07 . Memory (MB): peak = 536.652 ; gain = 223.555
+# connect_hw_server -url localhost:3121 -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2025.2
+  **** Build date : Oct 28 2025 at 10:03:13
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 14 2025-07:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:07 . Memory (MB): peak = 540.590 ; gain = 3.938
+# set_property PARAM.FREQUENCY 500000 [lindex [get_hw_targets] 0]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210299A1F551
+# set dev [lindex [get_hw_devices xc7z030*] 0]
+# current_hw_device $dev
+# set_property PROGRAM.FILE      $BITFILE $dev
+# set_property PROBES.FILE       $LTXFILE $dev
+# set_property FULL_PROBES.FILE  $LTXFILE $dev
+# program_hw_devices $dev
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_devices: Time (s): cpu = 00:01:35 ; elapsed = 00:01:37 . Memory (MB): peak = 541.910 ; gain = 0.000
+# puts "\[OK\] CoreMark PL programmed"
+[OK] CoreMark PL programmed
+# set xsdb_script [file join $PROJ_ROOT _ps7_init_run.tcl]
+# set fh [open $xsdb_script w]
+# puts $fh "connect"
+# puts $fh "targets -set -filter {name =~ \"APU*\"}"
+# puts $fh "source {$PS7_INIT}"
+# puts $fh "ps7_init"
+# puts $fh "ps7_post_config"
+# puts $fh "disconnect"
+# close $fh
+# catch {exec xsdb $xsdb_script}
+# puts "\[OK\] ps7_init invoked"
+[OK] ps7_init invoked
+# refresh_hw_device $dev
+INFO: [Labtools 27-2302] Device xc7z030 (JTAG device index = 1) is programmed with a design that has 1 ILA core(s).
+# set ila [lindex [get_hw_ilas] 0]
+# set p_v [get_hw_probes *dbg_uart_tx_valid* -of_objects $ila]
+# set_property CONTROL.CAPTURE_MODE BASIC $ila
+# set_property CAPTURE_COMPARE_VALUE eq1'b1 $p_v
+# set_property TRIGGER_COMPARE_VALUE eq1'b1 $p_v
+# set_property CONTROL.TRIGGER_POSITION 0 $ila
+# run_hw_ila $ila
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-15 16:19:43
+# puts "ILA armed. Waiting 15 s for UART chars..."
+ILA armed. Waiting 15 s for UART chars...
+# after 15000
+# catch {wait_on_hw_ila -timeout 1 $ila}
+wait_on_hw_ila: Time (s): cpu = 00:00:00 ; elapsed = 00:01:00 . Memory (MB): peak = 599.973 ; gain = 0.000
+# upload_hw_ila_data $ila
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-15 16:20:58
+INFO: [Labtools 27-2213] The ILA core 'hw_ila_1' captured one window with '484' samples.
+# write_hw_ila_data -force -csv_file [file join $PROJ_ROOT ila_coremark_test.csv] hw_ila_data_1
+# puts "RESULT: ila_coremark_test.csv written"
+RESULT: ila_coremark_test.csv written
+# close_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 15 16:20:59 2026...

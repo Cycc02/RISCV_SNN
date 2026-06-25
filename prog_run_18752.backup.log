@@ -1,0 +1,70 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Fri Jun 12 14:28:22 2026
+# Process ID         : 18752
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN
+# Command line       : vivado.exe -mode batch -source program_fpga.tcl -journal prog_journal.jou -log prog_run.log
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/prog_run.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN\prog_journal.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 30489 MB
+#-----------------------------------------------------------
+source program_fpga.tcl
+# set PROJ_ROOT [file dirname [info script]]
+# set IMPL_DIR  [file join $PROJ_ROOT RISCV_SNN.runs impl_1]
+# set BITFILE   [file join $IMPL_DIR riscv_top.bit]
+# set LTXFILE   [file join $IMPL_DIR riscv_top.ltx]
+# set PS7_INIT  [file join $PROJ_ROOT RISCV_SNN.gen sources_1 bd ps_stub ip \
+#                    ps_stub_ps7_0_0 ps7_init.tcl]
+# if {![file exists $BITFILE]} {
+#     error "Bitfile not found: $BITFILE\nRun quick_build.tcl first."
+# }
+# open_hw_manager
+open_hw_manager: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 535.156 ; gain = 221.508
+# connect_hw_server -url localhost:3121 -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2025.2
+  **** Build date : Oct 28 2025 at 10:03:13
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 14 2025-07:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+connect_hw_server: Time (s): cpu = 00:00:00 ; elapsed = 00:00:08 . Memory (MB): peak = 538.109 ; gain = 2.953
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210299A1F551
+ERROR: [Labtools 27-2269] No devices detected on target localhost:3121/xilinx_tcf/Digilent/210299A1F551.
+Check cable connectivity and that the target board is powered up then
+use the disconnect_hw_server and connect_hw_server to re-register this hardware target.
+ERROR: [Common 17-39] 'open_hw_target' failed due to earlier errors.
+
+    while executing
+"open_hw_target"
+    (file "program_fpga.tcl" line 19)
+INFO: [Common 17-206] Exiting Vivado at Fri Jun 12 14:28:40 2026...

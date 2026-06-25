@@ -1,0 +1,48 @@
+
+=== Step 1: Building CoreMark firmware ===
+[OK] coremark.elf compiled
+     start address 0x00000000
+[OK] C:\Users\Administrator\Documents\FYP_Docs\RISCV_SNN\itcm.hex written (801 lines)
+[OK] C:\Users\Administrator\Documents\FYP_Docs\RISCV_SNN\dtcm.hex written (114 lines)
+[OK] coremark.asm generated
+   text	   data	    bss	    dec	    hex	filename
+  12792	   1808	     20	  14620	   391c	C:\Users\Administrator\Documents\FYP_Docs\RISCV_SNN\coremark.elf
+
+=== Step 2: Compiling HDL ===
+[OK] xvlog done
+
+=== Step 3: Elaborating (--debug off -O3 --mt 8) ===
+Vivado Simulator v2025.2
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/AMDDesignTools/2025.2/Vivado/bin/unwrapped/win64.o/xelab.exe --incr --debug off --relax --mt 8 -O3 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot coremark_tb_behav xil_defaultlib.coremark_tb xil_defaultlib.glbl -log coremark_elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+WARNING: [VRFC 10-5021] port 'snn_done_i' is not connected on this instance [C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sources_1/new/riscv_top.v:265]
+WARNING: [VRFC 10-5021] port 'snn_rd_en_i' is not connected on this instance [C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sources_1/new/riscv_top.v:340]
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+[OK] Elaboration done
+
+=== Step 4: Patching xsim_script.tcl (remove -autoloadwcfg) ===
+[OK] xsim_script.tcl patched
+
+=== Step 4: Running simulation ===
+    Output will stream below. Ctrl+C to abort.
+
+
+****** xsim v2025.2 (64-bit)
+  **** SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+  **** IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+  **** SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+  **** Start of session at: Wed Jun  3 14:16:38 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/coremark_tb_behav/xsim_script.tcl
+# xsim {coremark_tb_behav} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== CoreMark Simulation  (MAX_CYCLES=5000 M) ===
+[390000 ns] Reset released.

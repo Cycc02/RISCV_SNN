@@ -1,0 +1,112 @@
+#-----------------------------------------------------------
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun 15 16:58:14 2026
+# Process ID         : 16520
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN
+# Command line       : vivado.exe -mode batch -source program_and_capture.tcl
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/vivado.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN\vivado.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 24239 MB
+#-----------------------------------------------------------
+source program_and_capture.tcl
+# set PROJ_ROOT [file dirname [info script]]
+# set IMPL_DIR  [file join $PROJ_ROOT RISCV_SNN.runs impl_1]
+# set BITFILE   [file join $IMPL_DIR riscv_top.bit]
+# set LTXFILE   [file join $IMPL_DIR riscv_top.ltx]
+# set PS7_INIT  [file join $PROJ_ROOT RISCV_SNN.gen sources_1 bd ps_stub ip \
+#                    ps_stub_ps7_0_0 ps7_init.tcl]
+# if {![file exists $BITFILE]} { error "Bitfile not found: $BITFILE" }
+# open_hw_manager
+open_hw_manager: Time (s): cpu = 00:00:10 ; elapsed = 00:00:07 . Memory (MB): peak = 536.941 ; gain = 224.625
+# connect_hw_server -url localhost:3121 -allow_non_jtag
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:0
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2025.2.0
+  ****** Build date   : Nov 14 2025-07:16:52
+    **** Build number : 2025.2.1763075812
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+      ** Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+
+# set_property PARAM.FREQUENCY 500000 [lindex [get_hw_targets] 0]
+# open_hw_target
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210299A1F551
+# set dev [lindex [get_hw_devices xc7z030*] 0]
+# current_hw_device $dev
+# set_property PROGRAM.FILE $BITFILE $dev
+# set_property PROBES.FILE      $LTXFILE $dev
+# set_property FULL_PROBES.FILE $LTXFILE $dev
+# program_hw_devices $dev
+INFO: [Labtools 27-3164] End of startup status: HIGH
+program_hw_devices: Time (s): cpu = 00:01:36 ; elapsed = 00:01:36 . Memory (MB): peak = 544.207 ; gain = 0.000
+# puts "\[OK\] PL programmed"
+[OK] PL programmed
+# set xsdb_script [file join $PROJ_ROOT _ps7_init_run.tcl]
+# set fh [open $xsdb_script w]
+# puts $fh "connect"
+# puts $fh "targets -set -filter {name =~ \"APU*\"}"
+# puts $fh "source {$PS7_INIT}"
+# puts $fh "ps7_init"
+# puts $fh "ps7_post_config"
+# puts $fh "disconnect"
+# close $fh
+# puts "Running ps7_init via xsdb..."
+Running ps7_init via xsdb...
+# if {[catch {exec xsdb $xsdb_script} xsdb_out]} {
+#     puts "WARNING: xsdb said: $xsdb_out"
+# } else {
+#     puts "\[OK\] ps7_init done — FCLK0 running, CPU active"
+# }
+WARNING: xsdb said: no targets found with "name =~ "APU*"". available targets:
+  1  DAP (AHB AP transaction error, DAP status 0x30000021)
+  2  xc7z030
+     3  Legacy Debug Hub
+    while executing
+"error "no targets found with \"$params(filter)\". available targets:$target_list""
+    (procedure "targets" line 177)
+    invoked from within
+"targets -set -filter {name =~ "APU*"}"
+    (file "./_ps7_init_run.tcl" line 2)
+# refresh_hw_device $dev
+INFO: [Labtools 27-2302] Device xc7z030 (JTAG device index = 1) is programmed with a design that has 1 ILA core(s).
+# set ila [lindex [get_hw_ilas] 0]
+# set p_valid [get_hw_probes *dbg_uart_tx_valid* -of_objects $ila]
+# set_property CONTROL.CAPTURE_MODE BASIC $ila
+# set_property CAPTURE_COMPARE_VALUE eq1'b1 $p_valid
+# set_property TRIGGER_COMPARE_VALUE eq1'b1 $p_valid
+# set_property CONTROL.TRIGGER_POSITION 0 $ila
+# run_hw_ila $ila
+INFO: [Labtools 27-1964] The ILA core 'hw_ila_1' trigger was armed at 2026-Jun-15 17:00:11
+# puts "ILA armed (capture-qualified on uart_tx_valid). Waiting 4 min..."
+ILA armed (capture-qualified on uart_tx_valid). Waiting 4 min...
+# if {[catch {wait_on_hw_ila -timeout 4 $ila} err]} {
+#     puts "wait_on_hw_ila: $err"
+# }
+wait_on_hw_ila: Time (s): cpu = 00:00:01 ; elapsed = 00:04:00 . Memory (MB): peak = 600.684 ; gain = 0.176
+# upload_hw_ila_data $ila
+INFO: [Labtools 27-1965] The ILA core 'hw_ila_1' trigger was stopped by user at 2026-Jun-15 17:04:11
+INFO: [Labtools 27-2213] The ILA core 'hw_ila_1' captured one window with '484' samples.
+# write_hw_ila_data -force [file join $PROJ_ROOT ila_uart_chars.ila] hw_ila_data_1
+# write_hw_ila_data -force -csv_file [file join $PROJ_ROOT ila_uart_chars.csv] hw_ila_data_1
+# puts "RESULT: ila_uart_chars.csv + .ila written"
+RESULT: ila_uart_chars.csv + .ila written
+# close_hw_manager
+INFO: [Common 17-206] Exiting Vivado at Mon Jun 15 17:04:12 2026...

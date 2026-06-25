@@ -1,0 +1,45 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun  8 21:27:46 2026
+# Process ID         : 11072
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/snn_pe_snap/xsim_script.tcl}
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out/xsim.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out\xsim.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 28391 MB
+#-----------------------------------------------------------
+source xsim.dir/snn_pe_snap/xsim_script.tcl
+# xsim {snn_pe_snap} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+=== SNN_PE TB START ===
+[TB] Test 1 - Accumulate with spike=1, weight=50, thresh=179
+[SNN_PE  @45000] acc_in=0  weight=50  v_leaked=0  add_w=50  spike=0
+[SNN_PE  @85000] acc_in=50  weight=50  v_leaked=50  add_w=100  spike=0
+[SNN_PE  @125000] acc_in=100  weight=50  v_leaked=100  add_w=150  spike=0
+[SNN_PE  @165000] acc_in=150  weight=50  v_leaked=150  add_w=200  spike=1
+[TB] Test 2 - spike=0, weight ignored
+[SNN_PE  @215000] acc_in=0  weight=100  v_leaked=0  add_w=0  spike=0
+[TB] Test 3 - Leakage enabled, acc=160, weight=20
+[SNN_PE  @255000] acc_in=160  weight=20  v_leaked=80  add_w=100  spike=0
+[TB] Test 4 - Negative weight=-30, acc=50
+[SNN_PE  @295000] acc_in=50  weight=-30  v_leaked=50  add_w=20  spike=0
+[TB] Test 5 - Exactly at threshold (acc=129, weight=50 -> sum=179)
+[SNN_PE  @335000] acc_in=129  weight=50  v_leaked=129  add_w=179  spike=1
+=== SNN_PE TB DONE ===
+$finish called at time : 385 ns : File "C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sim_1/new/snn_pe_tb.sv" Line 92
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Jun  8 21:27:48 2026...

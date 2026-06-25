@@ -1,0 +1,83 @@
+#-----------------------------------------------------------
+# xsim v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 19:35:11 GMT 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Mon Jun  8 21:34:19 2026
+# Process ID         : 9644
+# Current directory  : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out
+# Command line       : xsim.exe -mode tcl -source {xsim.dir/snn_ctrl_snap/xsim_script.tcl}
+# Log file           : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out/xsim.log
+# Journal file       : C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/sim_out\xsim.jou
+# Running On         : LAPTOP-3DEM65C9
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 26200
+# Processor Detail   : AMD Ryzen 7 4800H with Radeon Graphics         
+# CPU Frequency      : 2895 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 16558 MB
+# Swap memory        : 25769 MB
+# Total Virtual      : 42328 MB
+# Available Virtual  : 28067 MB
+#-----------------------------------------------------------
+source xsim.dir/snn_ctrl_snap/xsim_script.tcl
+# xsim {snn_ctrl_snap} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+START SIMULATION
+[GENERATOR] Address: 1001101101 | IDLE Delay: 0
+[GENERATOR] Address: 1001001011 | IDLE Delay: 1
+[GENERATOR] Address: 0010101100 | IDLE Delay: 0
+[GENERATOR] Address: 0100010010 | IDLE Delay: 1
+[GENERATOR] Address: 1000101000 | IDLE Delay: 1
+[GENERATOR] Address: 1000000011 | IDLE Delay: 0
+[GENERATOR] Address: 1101000111 | IDLE Delay: 0
+[GENERATOR] Address: 0011000111 | IDLE Delay: 1
+[GENERATOR] Address: 0010000110 | IDLE Delay: 1
+[GENERATOR] Address: 0000011100 | IDLE Delay: 1
+[GENERATOR] Address: 0101001001 | IDLE Delay: 0
+[GENERATOR] Address: 0111110101 | IDLE Delay: 0
+[GENERATOR] Address: 0110001010 | IDLE Delay: 0
+[GENERATOR] Address: 0011100110 | IDLE Delay: 0
+[GENERATOR] Address: 1100101101 | IDLE Delay: 0
+[GENERATOR] Address: 1001100111 | IDLE Delay: 1
+[GENERATOR] Address: 0101000011 | IDLE Delay: 1
+[GENERATOR] Address: 0011010010 | IDLE Delay: 1
+[GENERATOR] Address: 0010011101 | IDLE Delay: 1
+[GENERATOR] Address: 1100011110 | IDLE Delay: 1
+[SCOREBOARD] Evaluating Spike ID: 621
+[SNN_CTRL @35000] FIFO_RD  data=621  layer=L1
+[SNN_CTRL @45000] STATE 0->1  layer=L1
+[SNN_CTRL @55000] STATE 1->2  layer=L1
+   [PASS - RAM] Output: 1368 | Expected: 1368
+[SNN_CTRL @65000] STATE 2->3  layer=L1
+[SNN_CTRL @65000] RAM_RD   addr=4968  loop=0  layer=L1
+   [PASS - RAM] Output: 1369 | Expected: 1369
+   [PASS - PE]  Index: 0 | Expected: 0
+[SNN_CTRL @75000] RAM_RD   addr=4969  loop=1  layer=L1
+[SNN_CTRL @75000] PE_EN    stp_idx=0  layer=L1
+   [PASS - RAM] Output: 136a | Expected: 136a
+   [PASS - PE]  Index: 1 | Expected: 1
+[SNN_CTRL @85000] RAM_RD   addr=4970  loop=2  layer=L1
+[SNN_CTRL @85000] PE_EN    stp_idx=1  layer=L1
+   [PASS - RAM] Output: 136b | Expected: 136b
+   [PASS - PE]  Index: 2 | Expected: 2
+[SNN_CTRL @95000] RAM_RD   addr=4971  loop=3  layer=L1
+[SNN_CTRL @95000] PE_EN    stp_idx=2  layer=L1
+   [PASS - RAM] Output: 136c | Expected: 136c
+   [PASS - PE]  Index: 3 | Expected: 3
+[SNN_CTRL @105000] RAM_RD   addr=4972  loop=4  layer=L1
+[SNN_CTRL @105000] PE_EN    stp_idx=3  layer=L1
+   [PASS - RAM] Output: 136d | Expected: 136d
+   [PASS - PE]  Index: 4 | Expected: 4
+[SNN_CTRL @115000] RAM_RD   addr=4973  loop=5  layer=L1
+[SNN_CTRL @115000] PE_EN    stp_idx=4  layer=L1
+   [PASS - RAM] Output: 136e | Expected: 136e
+   [PASS - PE]  Index: 5 | Expected: 5
+[SNN_CTRL @125000] RAM_RD   addr=4974  loop=6  layer=L1
+[SNN_CTRL @125000] PE_EN    stp_idx=5  layer=L1
+TEST FINISHED
+$finish called at time : 130 ns : File "C:/Users/Administrator/Documents/FYP_Docs/RISCV_SNN/RISCV_SNN.srcs/sim_1/new/snn_ctrl_tb.sv" Line 267
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Jun  8 21:34:21 2026...

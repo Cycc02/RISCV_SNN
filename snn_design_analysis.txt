@@ -1,0 +1,287 @@
+SNN Hardware Accelerator — Full Design Analysis
+================================================
+Generated: 2026-04-20
+Source file: snn_top.v
+
+
+ARCHITECTURE OVERVIEW
+=====================
+This is a single-layer (784 -> 64) Spiking Neural Network accelerator designed
+for MNIST-style image classification. It processes a binarized 28x28 image, runs
+Leaky Integrate-and-Fire (LIF) inference on 64 hidden neurons, and then runs
+on-chip STDP learning to update synaptic weights — all in hardware.
+
+Data path (high level):
+  img_pxl_i[783:0]
+    -> aer_scan  (AER encoding: 784 pixels -> spike address stream)
+    -> aer_fifo  (64-deep buffer, decouples scanner from controller)
+    -> snn_ctrl  (FSM sequencer: drives RAM reads and SIMD enables)
+    -> dual_port_RAM  Port A  (6272 x 64-bit weight memory)
+    -> simd_8 / snn_pe  (8 parallel LIF lanes x 8 scratchpad entries = 64 neurons)
+    -> hidden_spike_o[63:0]  (output spikes of hidden layer)
+
+  After inference completes:
+    -> spike_time_mem (pre + post spike timestamps)
+    -> learning_unit + stdp  (STDP weight update over all 6272 RAM words)
+    -> dual_port_RAM  Port B  (write updated weights back)
+
+
+MODULE-BY-MODULE BREAKDOWN
+==========================
+
+1. aer_scan — AER Scanner (Input Encoding)
+------------------------------------------
+What it does:
+  Converts a flat 784-bit binarized pixel bus into a stream of 10-bit spike
+  addresses (indices of pixels that are "on").
+
+Why AER?
+  Instead of sending all 784 pixel values, only the addresses of active pixels
+  are forwarded. This is sparse, event-driven encoding — the core principle of
+  neuromorphic computing.
+
+How it works:
+  784-bit image + 16'b0 padding  ->  800-bit shift register
+  Scan in 32-bit windows ("chunks"), 25 chunks total
+  For each chunk: find the lowest set bit (priority encoder)
+  Output: aer_data_o = (chunk_num x 32) + bit_index  [10-bit pixel index, 0-783]
+  Clear that bit -> continue scanning the same chunk next cycle
+  When chunk is all-zero -> shift register >> 32 (move to next chunk)
+  After chunk 25: assert scan_done_o
+
+Backpressure:
+  If aer_fifo is full, scanner pauses (fifo_full_i gates the scan loop).
+
+
+2. aer_fifo — Spike Address Buffer
+------------------------------------
+A standard synchronous FIFO (depth=64, width=10).
+It decouples the scanning rate from the control unit's processing rate.
+snn_ctrl pulls entries out one at a time as it finishes processing each spike.
+
+
+3. snn_ctrl — Control Unit (FSM)
+----------------------------------
+This is the sequencer for inference. It pulls one spike address from the FIFO
+and drives the weight RAM reads and SIMD enables in the correct pipeline order.
+
+States:
+  IDLE --(fifo not empty)--> FETCH --> DEC --> EXEC (8 iterations) --> IDLE
+
+  IDLE   : Assert fifo_rd_en, wait for a spike address to appear
+  FETCH  : Wait one cycle for FIFO read latency
+  DEC    : Latch spike_address from FIFO output
+  EXEC   : Loop loop_count 0->8, performing 8 pipelined MAC iterations
+
+EXEC pipeline detail (for input spike at address n):
+  loop_count | RAM read addr | pe_en | stp_idx
+  -----------|---------------|-------|--------
+      0      |    n*8 + 0    |   0   |   —
+      1      |    n*8 + 1    |   1   |   0
+      2      |    n*8 + 2    |   1   |   1
+      ...    |     ...       |  ...  |  ...
+      7      |    n*8 + 7    |   1   |   6
+      8      |   (no read)   |   1   |   7
+
+The one-cycle offset between RAM read and PE enable is intentional:
+the synchronous BRAM takes one clock to return data, so the read at
+loop_count=k feeds the PE at loop_count=k+1.
+
+spike_o is hardwired to 1'b1 — every FIFO event is treated as a positive spike.
+
+
+4. dual_port_RAM — Weight Memory (6272 x 64-bit)
+--------------------------------------------------
+Holds all 50,176 synaptic weights (784 inputs x 64 hidden neurons = 50,176
+= 6272 x 8 weights/word).
+
+Memory layout:
+  RAM address = (input_neuron_index x 8) + group_index
+  RAM[n*8 + k][j*8 +: 8] = weight from input neuron n
+                             to hidden neuron (lane=j, group=k)
+
+Two ports:
+  Port A — read-only by snn_ctrl during inference
+  Port B — read/write by learning_unit during STDP
+
+
+5. simd_8 + snn_pe — SIMD Processing Engine
+---------------------------------------------
+simd_8 instantiates 8 parallel lanes (snn_pe), each representing one column
+of hidden neurons.
+
+Each lane has a scratchpad of 8 x 32-bit membrane potentials, indexed by
+stp_idx (0-7). This gives 8 lanes x 8 entries = 64 hidden neurons total.
+
+snn_pe — Leaky Integrate-and-Fire (LIF) neuron:
+  v_leaked   = acc_i >> 1              (leak: divide by 2)
+  add_w      = v_leaked + weight_i     (integrate: add weight if spike=1)
+  spike_trig = (add_w >= THRESHOLD)    (fire if potential >= 342)
+
+  On fire:   acc_o = 0                 (reset membrane potential)
+  No fire:   acc_o = add_w             (hold accumulated potential)
+
+What the THRESHOLD of 342 means:
+  A single maximum weight is 127 (signed 8-bit). After leakage, roughly
+  342 / 127 ~ 2.7 input spikes are needed to trigger a hidden neuron,
+  assuming maximum weights and no leakage loss. In practice, more spikes
+  are needed depending on weight values and the exponential decay from leakage.
+
+stp_idx_delay in simd_8:
+  The write-back to the scratchpad is delayed by one clock cycle relative to
+  the read index. This handles the pipeline: read scratchpad[k] -> compute ->
+  write back to scratchpad[k] one cycle later using the delayed index.
+
+
+6. spike_time_mem — Spike Timestamp Memories
+----------------------------------------------
+Simple single-port RAM storing the timestep at which each neuron last fired.
+Used by the STDP learning unit.
+
+Pre-synaptic timestamps (pre_time):
+  Depth  : 784 entries (one per input neuron)
+  Written: whenever AER scanner emits a valid spike
+           (address = pixel index, data = timestep_i)
+
+Post-synaptic timestamps (pos_timestep_mem, 8 instances):
+  Depth  : 8 entries per lane (one per scratchpad group k)
+  Written: when pe_en && lane_spike (hidden neuron fired during inference)
+  Write address: stp_idx (the group index k, 0-7)
+  Read address : t_post_addr from learning unit = ram_addr[2:0]
+
+
+7. learning_unit + stdp — STDP Weight Update Engine
+-----------------------------------------------------
+learning_unit iterates through all 6272 RAM addresses sequentially and applies
+weight updates.
+
+FSM: IDLE -> FETCH_MEM -> LATCH_WAIT -> EXEC -> (repeat or IDLE)
+
+For each address:
+  Address decomposition:
+    ram_addr[12:3]  ->  t_pre_addr  (input neuron index n)
+    ram_addr[2:0]   ->  t_post_addr (hidden group index k)
+
+  Reads:
+    t_pre_data  = time when input neuron n last spiked
+    t_post_data = time when hidden neurons (0..7, k) last spiked
+
+  8 STDP modules fire in parallel (one per lane j):
+    dt = t_post[j,k] - t_pre[n]
+    -> update weight[j,k,n]
+
+  Write updated 64-bit word back to RAM via Port B
+
+stdp — Multiplicative STDP rule:
+  dt = t_post - t_pre
+
+  If  0 < dt <= 8  (post fires AFTER pre -> causal -> potentiate):
+    dw = (MAX_WEIGHT - weight) >> 3
+    weight_new = weight + dw       <- approaches +127 asymptotically
+
+  If -8 <= dt < 0  (post fires BEFORE pre -> acausal -> depress):
+    dw = (weight - MIN_WEIGHT) >> 3
+    weight_new = weight - dw       <- approaches -128 asymptotically
+
+  Otherwise (|dt| > 8 or dt = 0):
+    weight unchanged
+
+The multiplicative form (dist >> ALPHA_SHIFT) means weight changes slow down
+as weights approach their limits — this naturally keeps weights bounded within
+[-128, +127] without hard clipping.
+
+
+COMPLETE DATA FLOW
+==================
+
+--- Inference Process ---
+
+Step 1 — AER Encoding
+  img_pxl_i[783:0]
+  -> aer_scan: scan 784 pixels in 32-bit chunks
+  -> emit 10-bit spike addresses for every active pixel
+  -> aer_fifo: buffer up to 64 spike addresses
+
+Step 2 — For each spike address n in FIFO:
+  snn_ctrl FETCH/DEC: latch n from FIFO
+
+  snn_ctrl EXEC (8 iterations, k = 0..7):
+    RAM read: weight_ram[Port A][n*8+k]  ->  64-bit weight word  (8 x 8-bit weights)
+    (1 cycle later)
+    simd_8: 8 PEs in parallel
+      lane j:
+        v_leaked = potential[j][k] >> 1
+        add_w    = v_leaked + weight[j*8 +: 8]
+        spike    = (add_w >= 342)
+        update   potential[j][k] = spike ? 0 : add_w
+
+Step 3 — Repeat Step 2 for every spike address in FIFO
+
+Step 4 — Completion
+  scan_done && fifo_empty  ->  done_layer1_o = 1
+
+  hidden_spike_o[63:0]:
+    bits [(k*8) + j] = whether hidden neuron (lane=j, group=k) fired
+    (captured from spike_out[7:0] during each stp_idx iteration)
+
+--- Learning Process (STDP, starts automatically after inference) ---
+
+  done_inference -> start_stdp (1-cycle registered delay) -> lr_en
+
+  learning_unit FSM iterates addr = 0 to 6271:
+
+    For addr = n*8 + k:
+      Read pre_time[n]      -> t_pre  (when did input n spike?)
+      Read post_time[j][k]  -> t_post (when did hidden (j,k) spike?)
+      Read weight_ram[Port B][addr]  -> 8 old weights (one per lane)
+
+      (LATCH_WAIT: 1 cycle for memories to settle)
+
+      (EXEC)
+      8 STDP modules (parallel, one per lane j):
+        dt = t_post[j] - t_pre
+        new_weight[j] = STDP(old_weight[j], dt)
+
+      Write new 64-bit word back to weight_ram[Port B][addr]
+
+    After addr = 6271: lr_done_o = 1  ->  done_learn_o = 1
+
+
+KEY DESIGN PARAMETERS
+=====================
+Parameter         | Value        | Meaning
+------------------|--------------|------------------------------------------
+Input neurons     | 784          | 28x28 MNIST pixels
+Hidden neurons    | 64           | 8 SIMD lanes x 8 scratchpad groups
+Total weights     | 50,176       | 784 x 64 = 6272 RAM words x 8 weights/word
+Weight width      | 8-bit signed | Range: -128 to +127
+LIF threshold     | 342          | Membrane potential fire threshold
+LIF leak          | div 2/spike  | Exponential decay (half-life = 1 input event)
+STDP window       | +/- 8 tsteps | dt beyond +/-8 -> no weight change
+STDP rate         | >> 3 (div 8) | ~12.5% of remaining distance per update
+FIFO depth        | 64 addresses | Can buffer up to 64 simultaneous spikes
+
+
+KEY DESIGN OBSERVATIONS
+=======================
+1. Fully sequential inference per spike.
+   Each input spike takes 8+3 cycles (FETCH+DEC+8xEXEC). For 784 active pixels
+   at worst case: ~8,800 cycles per inference.
+
+2. No output layer.
+   hidden_spike_o is the raw output. A second SNN layer or a rate-counting
+   read-out would be needed for classification — this module is Layer 1 only.
+
+3. Learning is always triggered.
+   After every inference (scan_done && fifo_empty), STDP runs unconditionally
+   through all 6272 weights. There is no explicit "training mode" flag — the
+   hardware always learns.
+
+4. STDP is unsupervised.
+   There is no label signal. The STDP rule self-organises weights based purely
+   on spike timing correlation between input pixels and hidden neurons.
+
+5. One timestep per call.
+   timestep_i is an external input — the caller must increment it across
+   multiple presentations of the same image to implement rate or latency
+   coding across time.
