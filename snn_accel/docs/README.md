@@ -83,17 +83,63 @@ while ((REG(0x0004) & 0x1) == 0) ;
 uint32_t out = REG(0x0018) & 0x3FF;
 ```
 
-### Vivado integration sketch
+### Using the packaged IP in a Vivado MicroBlaze project
 
-1. Add `snn_accel/rtl/*.v` and `snn_accel/wrapper/axi4lite_snn_wrapper.v` as
-   sources to your MicroBlaze project (or package as IP via
-   `Tools → Create and Package New IP`).
-2. In the block design, instantiate `axi4lite_snn_wrapper` and connect its
-   `S_AXI_*` port to MicroBlaze's `M_AXI_DP` (or to an AXI Interconnect
-   downstream of the LMB→AXI bridge).
-3. Assign an address (default Xilinx user-IP range, e.g. `0x44A0_0000`,
-   size 32 KB).
-4. Tie `S_AXI_ACLK` / `S_AXI_ARESETN` to the MicroBlaze AXI clock/reset.
+The IP is pre-packaged at `snn_accel/ip_repo/axi4lite_snn_wrapper_1.0/`.
+If it's missing or you want to rebuild from source, regenerate it with:
+
+```tcl
+# In Vivado Tcl console, from the repo root:
+cd <repo_root>
+source snn_accel/package_ip.tcl
+```
+
+#### Step 1 — Register the IP repository
+
+In your MicroBlaze Vivado project:
+
+`Project Settings → IP → Repository → +` and add the absolute path to
+`snn_accel/ip_repo/`. Click **OK**; Vivado scans and reports 1 IP found
+("SNN Accelerator (AXI4-Lite)").
+
+#### Step 2 — Add the IP to the Block Design
+
+1. Open your Block Design.
+2. **Add IP** (`+` icon) → search **"SNN Accelerator"** → double-click.
+3. The cell appears with one slave AXI interface `S_AXI` plus the clock/reset.
+
+#### Step 3 — Connect AXI, clock, reset
+
+- **`S_AXI`** → connect to MicroBlaze `M_AXI_DP` directly, OR to a slave port
+  of an **AXI Interconnect** downstream of the LMB→AXI bridge if you already
+  have multiple AXI peripherals.
+- **`S_AXI_ACLK`** → same clock that drives MicroBlaze's AXI side
+  (typically the `clk_wiz` output, e.g. 100 MHz).
+- **`S_AXI_ARESETN`** → the `peripheral_aresetn` output of the
+  `Processor System Reset` block tied to the MicroBlaze AXI clock.
+
+Run **Run Connection Automation** if you'd rather Vivado handle the
+interconnect/reset plumbing for you.
+
+#### Step 4 — Assign address
+
+Open the **Address Editor** tab. Under MicroBlaze → Data, the new IP appears
+as **Unmapped**. Right-click → **Assign Address**. Defaults to a Xilinx user-IP
+slot (e.g. `0x44A0_0000`, range **32K**). Note the address — your software
+uses it as `SNN_BASE`.
+
+#### Step 5 — Validate, generate, export
+
+1. **Validate Design** (`F6`) — should pass with no errors.
+2. **Generate Bitstream**.
+3. **File → Export → Export Hardware** (include bitstream) to produce the
+   `.xsa` for the Vitis software side.
+
+#### Step 6 — Software (Vitis)
+
+Use the MMIO pattern from the example above, with `SNN_BASE` set to the
+address you assigned in Step 4. No BSP driver is shipped — the register map
+is small enough that direct `volatile uint32_t *` access is the simplest path.
 
 ## Notes vs. original RV32I integration
 

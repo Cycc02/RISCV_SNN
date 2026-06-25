@@ -1,0 +1,7 @@
+# Throwaway packaging project created by package_ip.tcl
+.pkg_proj/
+
+# Vivado journal/log files
+*.jou
+*.log
+*.str
